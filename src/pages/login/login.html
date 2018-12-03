@@ -1,0 +1,122 @@
+<ion-header>
+  <ion-navbar color="title2">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>เข้าสู่ระบบ</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  
+
+  <!--<section class="material-half-bg">
+        <div class="cover"></div>
+      </section>
+      <section class="login-content">
+        <div class="logo">
+          <h1></h1>
+        </div>
+        <div class="login-box">
+          <form class="login-form" action="index.html">
+            <h3 class="login-head"><i class="fa fa-lg fa-fw fa-user"></i>SIGN IN</h3>
+            <div class="form-group">
+              <label class="control-label">USERNAME</label>
+              <input class="form-control" type="text" placeholder="Username" autofocus  name="username">
+            </div>
+            <div class="form-group">
+              <label class="control-label">PASSWORD</label>
+              <input class="form-control" type="password" placeholder="Password"  name="password">
+            </div>
+            <div class="form-group">
+              <div class="utility">
+         
+                  <p class=" mb-2" (click)="registerPage()" ><a href="#">Register</a></p>
+         
+                <p class=" mb-2"><a href="#" data-toggle="flip">Forgot Password ?</a></p>
+              </div>
+            </div>
+            <div class="form-group btn-container">
+              <button class="btn btn-primary btn-block font"   (click)="login()"><i class=""></i>เข้าสู่ระบบ</button>
+              <P class="center">หรือ</P>
+              <button class="btn btn-outline-info btn-block font" (click)="LoginFacebook()" *ngIf="!facebook.loggedin " ><i class="fa fa-facebook-square fa-lg fa-fw"></i>เข้าสู่ระบบด้วย Facebook</button>
+              <button class="btn btn-outline-info btn-block font" (click)="LogoutOfFacebook()"  *ngIf="facebook.loggedin "><i class="fa fa-google-plus fa-lg fa-fw"></i>เข้าสู่ระบบด้วย Google</button>
+            </div>
+          </form>
+          
+        </div>
+        *ngIf="facebook.loggedin"
+      </section>-->
+
+
+  <section class="login-content">
+  <div id="LoginForm">
+    <div class="container">
+      <h1 class="form-heading">login Form</h1>
+      <div class="login-form">
+        <div class="main-div">
+          <div class="panel">
+            <h2>Admin Login</h2>
+            <p>Please enter your email and password</p>
+          </div>
+          <form id="Login">
+            <div class="form-group">
+              <input type="email" class="form-control" id="email" placeholder="Email Address" [(ngModel)]="email" name="email">
+            </div>
+            <div class="form-group">
+              <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password" name="password">
+            </div>
+
+            <div class="forgot">
+                <a ion-button full class="w3-text-white" (click)="goRegisterPage()">Register</a>
+        </div>
+
+            <ion-grid>
+              <ion-row>
+                <ion-col>
+                  <div class="w3-panel w3-border-bottom"></div>
+                </ion-col>
+                <ion-col>
+                  <p>or</p>
+                </ion-col>
+                <ion-col>
+                  <div class="w3-panel w3-border-bottom"></div>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+
+
+            <div class="font">
+              <ion-grid>
+                <ion-row>
+                  <ion-col col-6>
+                    <button class="btn btn-lg btn-info btn-block" style="font-size: 15px;" (click)="LoginFacebook()">
+                      <i class="fa fa-facebook-square fa-lg fa-fw" style="font-size: 15px;"></i>Facebook</button>
+                  </ion-col>
+
+                  <ion-col col-6>
+                    <button class="btn btn-lg btn-info btn-block" style="font-size: 15px;">
+                      <i class="fa fa-google-plus fa-lg fa-fw" style="font-size: 15px;"></i>Google</button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          
+            <button type="submit" class="btn btn-primary" (click)="signIn()">Login</button>
+          </form>
+        </div>
+        <p class="botto-text"> Designed by Sunil Rajput</p>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+
+
+
+  <ion-card *ngIf="AddButton">
+    <div>Sucress</div>
+  </ion-card>
+
+</ion-content>

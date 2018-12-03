@@ -1,0 +1,60 @@
+<ion-header>
+
+  <ion-navbar color="wat">
+    <ion-title>ผู้ดูแลระบบ</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <div>
+    <div class="container">
+      <div class="d-flex justify-content-center h-100 w3-margin">
+        <div class="image_outer_container">
+          <div class="green_icon"></div>
+          <div class="image_inner_container">
+            <img src="{{photoURL}}">
+          </div>
+        </div>
+      </div>  
+
+    </div>
+
+    <!--Name-->
+    <div class="profile-usertitle">
+        <div class="profile-usertitle-name">
+          {{email}}
+        </div>
+        <div class="profile-usertitle-job">
+          Status: {{displayName}}
+        </div>
+      </div>
+
+    <button class="profile-usertitle-btn btn btn-outline-info btn-block font btn-lg " (click)="Logout()">
+      <i class="fa fa-sign-out fa-lg fa-fw"></i>Logout</button>
+
+    <br>
+
+    <ion-item-group>
+      <ion-item-divider color="wat">จัดการ</ion-item-divider>
+      <ion-list>
+          <button ion-item (click)="goHomePage()">
+              หน้าแรก
+          </button>
+
+        <button ion-item (click)="goAddPage()">
+          เพิ่มสถานที่
+        </button>
+        <button ion-item (click)="goEditPage()">
+          แก้ไขสถานที่
+        </button>
+
+      </ion-list>
+    </ion-item-group>
+
+  </div>
+
+
+</ion-content>

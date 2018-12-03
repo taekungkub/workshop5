@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-navbar >
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>ฉัน</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content >
+
+    <ion-card>
+
+        <img src="{{facebook.profilePicture}}">
+          
+            <ion-card-content>
+              <!-- Add card content here! -->
+                <ion-card-title>
+                   {{facebook.name}}
+    
+                </ion-card-title>
+                <p>{{facebook.email}}</p>
+           
+            </ion-card-content>
+
+          </ion-card>
+          <button class="btn btn-outline-info btn-block font" (click)="LogoutOfFacebook()" ><i class="fa fa-sign-out fa-lg fa-fw"></i>Log Out</button>
+          
+</ion-content>

@@ -1,0 +1,97 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>แก้ไข</ion-title>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <form *ngIf="AddForm">
+        <!--title-->
+        <div class="form-group">
+            <label for="title">ชื่อสถานที่</label>
+            <input name="title" type="text" class="form-control" id="title" placeholder="example วัดเขียนเขต..." [(ngModel)]="student.title">
+        </div>
+        <!--Name-->
+        <div class="form-group">
+            <label for="name">ชื่อตำบล</label>
+            <input name="name" type="text" class="form-control" id="name" placeholder="example วัดเขียนเขต..." [(ngModel)]="student.name">
+        </div>
+        <!--time-->
+        <div class="form-group">
+            <label for="time">เวลา</label>
+            <input name="time" type="text" class="form-control" id="time" placeholder="" [(ngModel)]="student.time">
+        </div>
+        <!--call-->
+        <div class="form-group">
+            <label for="call">เบอร์ติดต่อ</label>
+            <input name="call" type="text" class="form-control" id="call" placeholder="" [(ngModel)]="student.call">
+        </div>
+        <!--desc-->
+        <div class="form-group">
+            <label for="desc">รายละเอียด</label>
+            <textarea name="desc" type="text" rows="5" class="form-control" id="desc" placeholder="" [(ngModel)]="student.desc"></textarea>
+        </div>
+        <!--track-->
+        <div class="form-group">
+            <label for="track">เส้นทาง</label>
+            <input name="track" type="text" class="form-control" id="track" placeholder="link google map" [(ngModel)]="student.track">
+        </div>
+        <button ion-button  *ngIf="updateWatBTN" (click)="updateWat(item)" class="w3-padding">ยืนยัน</button>
+        <button ion-button  *ngIf="updateVolunteerBTN" (click)="updateVolunteer(item)" class="w3-padding">ยืนยัน</button>
+ 
+        <button ion-button (click)="dismissUpdate()" class="w3-padding">ยกเลิก</button>
+    </form>
+    
+    <!--วัด-->
+    <ion-item-divider color="wat"> วัด</ion-item-divider>
+    <ion-list *ngFor="let item of itemsWat | async">
+        <ion-item-sliding>
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="{{item.payload.val().imageURL}}">
+                </ion-avatar>
+                <h2>{{item.payload.val().title}}</h2>
+                <p>{{item.payload.val().name}}</p>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="dark" (click)="editWat(item)">
+                    <ion-icon name="md-create"></ion-icon>
+                    Edit
+                </button>
+                <button ion-button color="danger" (click)="onClickDelete(item)">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <!--จิตอาสา-->
+    <ion-item-divider color="volunteer">จิตอาสา</ion-item-divider>
+    <ion-list *ngFor="let item of itemsVolunteer | async">
+        <ion-item-sliding>
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="{{item.payload.val().imageURL}}">
+                </ion-avatar>
+                <h2>{{item.payload.val().title}}</h2>
+                <p>{{item.payload.val().name}}</p>
+            </ion-item>
+
+            <ion-item-options side="right">
+                <button ion-button color="dark" (click)="editVolunteer(item)">
+                    <ion-icon name="md-create"></ion-icon>
+                    Edit
+                </button>
+                <button ion-button color="danger" (click)="onClickDeleteVolunteer(item)">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <!--ที่ท่องเที่ยว-->
+    <ion-item-divider color="travel">
+        สถานที่ท่องเที่ยว
+    </ion-item-divider>
+</ion-content>

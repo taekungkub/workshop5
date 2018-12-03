@@ -1,0 +1,128 @@
+<!--
+  Generated template for the AddPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="titleAdd">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>เพิ่มสถานที่ท่องเที่ยว</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <ion-item>
+    <ion-label>ประเภท</ion-label>
+    <ion-select [(ngModel)]="student.type">
+      <ion-option value="wat">วัด</ion-option>
+      <ion-option value="volunteer">จิตอาสา</ion-option>
+      <ion-option value="travel">ท่องเที่ยว</ion-option>
+    </ion-select>
+  </ion-item>
+
+
+
+
+  <form>
+    <!--Upload Image-->
+
+    <br>
+
+
+
+
+    <ion-item-divider color="light">ภาพประกอบ</ion-item-divider>
+    <ion-item>
+      <input type="file" (change)="uploadFile($event)" />
+    </ion-item>
+    <ion-item>
+      <input type="file" (change)="uploadFile2($event)" />
+    </ion-item>
+    <ion-item>
+        <input type="file" (change)="uploadFile3($event)" />
+      </ion-item>
+
+    <ion-item-group>
+
+      <div *ngIf="uploadPercent | async as pct">
+        <ion-item-divider color="light">ตัวอย่าง</ion-item-divider>
+        <progress class="progress is-info" [value]="pct" max="100"></progress>
+        {{ pct | number }}%
+      </div>
+      <div class="image">
+        <img src="{{ downloadURL | async }}">
+      </div>
+    </ion-item-group>
+
+    <div *ngIf="uploadPercent2 | async as pct">
+      <progress class="progress is-info" [value]="pct" max="100"></progress>
+      {{ pct | number }}%
+    </div>
+    <div class="image">
+      <img src="{{ downloadURL2 | async }}">
+    </div>
+
+    <div *ngIf="uploadPercent3 | async as pct">
+        <progress class="progress is-info" [value]="pct" max="100"></progress>
+        {{ pct | number }}%
+      </div>
+      <div class="image">
+        <img src="{{ downloadURL3 | async }}">
+      </div>
+  
+
+
+
+
+
+
+    <!--title-->
+    <div class="form-group">
+      <label for="title">ชื่อสถานที่</label>
+      <input name="title" type="text" class="form-control" id="title" placeholder="example วัดเขียนเขต..." [(ngModel)]="student.title">
+    </div>
+
+    <!--name-->
+    <div class="form-group">
+      <label for="name">เขต/อำเภอ</label>
+      <input name="name" type="text" class="form-control" id="name" placeholder="ต.บึงยี่โถ อ.ธัญญบุรี..." [(ngModel)]="student.name">
+    </div>
+
+    <!--time-->
+    <div class="form-group">
+      <label for="time">เวลา</label>
+      <input name="time" type="text" class="form-control" id="time" placeholder="8.00-16.00" [(ngModel)]="student.time">
+    </div>
+
+    <!--call-->
+    <div class="form-group">
+      <label for="call">เบอร์ติดต่อ</label>
+      <input name="call" type="text" class="form-control" id="call" placeholder="094-870-9999" [(ngModel)]="student.call">
+    </div>
+
+    <!--desc-->
+    <div class="form-group">
+      <label for="desc">รายละเอียด</label>
+      <textarea name="desc" type="text" rows="5" class="form-control" id="desc" placeholder="เลขที่ 98 ริมฝั่งคลองรังสิตประยูรศักดิ์ หมู่ 3 ตำบลบึงยี่โถ อำเภอธัญบุรี จังหวัดประทุมธานี"
+        [(ngModel)]="student.desc"></textarea>
+    </div>
+
+    <!--track-->
+    <div class="form-group">
+      <label for="track">เส้นทาง</label>
+      <input name="track" type="text" class="form-control" id="track" placeholder="link google map" [(ngModel)]="student.track">
+    </div>
+
+    <button ion-button full (click)="onClickSubmit()">Summit</button>
+  </form>
+
+
+
+
+
+</ion-content>

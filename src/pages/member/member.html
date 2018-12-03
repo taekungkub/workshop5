@@ -1,0 +1,27 @@
+<ion-header>
+    <ion-navbar color="wat">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>สมาชิก</ion-title>
+    </ion-navbar>
+  </ion-header>
+
+<ion-content padding>
+
+   <!--สมาชิก-->
+
+   <ion-list>
+           <ion-item  *ngFor="let item of itemsUser | async">
+               <ion-avatar item-start>
+                   <img src="{{item.payload.val().photoURL}}">
+               </ion-avatar>
+               <h2>{{item.payload.val().email}}</h2>
+               <p>สถานนะ: {{item.payload.val().status}}</p>
+               <button ion-button outline item-end (click)="member(item)">member</button>
+               <button ion-button outline item-end (click)="admin(item)">admin</button>
+           </ion-item>
+   </ion-list>
+
+
+</ion-content>

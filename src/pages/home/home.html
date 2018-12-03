@@ -1,0 +1,69 @@
+<ion-header >
+  <ion-navbar color="title2">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>บึงยี่โถ</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+
+  <div class="test">
+
+<div class="w3-display-container" style="text-align: center" (click)="goWatPage()" >
+    <img src="https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/1.jpg?alt=media&token=5732d6cc-616b-43bf-94e4-38c585f4934c"
+      alt="" style="width:100%" class="w3-round ">
+    <div class="w3-display-middle w3-black" style="opacity:0.4;width:100%;height: 100%">
+    </div>
+    <div class="w3-display-middle ">
+      <h3 style="color:white;" >
+          <b style="font-size: 36px" class="">วัด</b>
+        <b><br>สถานที่ต้องแวะทำบุญ ไหว้พระ</b>
+        <div class="w3-display-bottom">
+        </div>
+      </h3>
+      <div *ngFor="let item of items | async">
+       <!-- <ion-icon name="md-eye" style="color:white;"><span></span>
+            </ion-icon>-->  
+            
+      
+      </div>
+  
+    </div>
+  </div>
+
+ 
+  <div style="margin: 5px;"></div>
+
+  <div class="w3-display-container" style="text-align: center" (click)="goVolunteerPage()">
+      <img src="https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/2.jpg?alt=media&token=f5122cfa-eef4-4f4a-8e06-fd2a50469a4a"
+        alt="" style="width:100%" class="w3-round ">
+      <div class="w3-display-middle w3-black" style="opacity:0.4;width:100%;height: 100%">
+      </div>
+      <div class="w3-display-middle ">
+        <h3 style="color:white;">
+            <b style="font-size: 36px">จิตอาสา</b>
+          <b><br>สถานสงเคราะห์ ศูนย์รับความช่วยเหลือ</b>
+        </h3>
+      </div>
+    </div>
+  
+    <div style="margin: 5px;"></div>
+
+    <div class="w3-display-container" style="text-align: center">
+        <img src="https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/3.png?alt=media&token=a56f86a5-64af-4429-b7c5-2823d8079d9c"
+          alt="" style="width:100%" class="w3-round ">
+        <div class="w3-display-middle w3-black" style="opacity:0.4;width:100%;height: 100%">
+        </div>
+        <div class="w3-display-middle ">
+          <h3 style="color:white;">
+              <b style="font-size: 36px">ท่องเที่ยว</b>
+            <b><br>สถานที่ท่องเที่ยวที่น่าสนใจ</b>
+          </h3>
+        </div>
+      </div>
+    
+    </div>
+</ion-content>
