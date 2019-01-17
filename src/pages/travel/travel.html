@@ -6,8 +6,8 @@
 -->
 <ion-header>
 
-  <ion-navbar color="volunteer">
-    <ion-title>จิตอาสา</ion-title>
+  <ion-navbar color="travel">
+    <ion-title>ท่องเที่ยว</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,7 +16,7 @@
 <ion-content padding>
 
 
-    <div class="w3-text-white w3-large" *ngFor="let item of itemsVolunteer | async" (click)="goVolunteerDetails(item)">
+    <div class="w3-text-white w3-large" *ngFor="let item of itemsTravel | async" (click)="goTraveldetailsPage(item)">
         <div class="w3-margin-bottom">
           <div class="w3-display-container">
             <img src="{{item.payload.val().imageURL}}"

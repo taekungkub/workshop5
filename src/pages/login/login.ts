@@ -5,19 +5,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from "firebase";
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 
-import { HomePage } from '../home/home';
-import { UserPage } from '../user/user';
-import { TabsPage } from '../tabs/tabs';
-import { EditPage } from '../edit/edit';
-import { RegisterPage } from '../register/register';
-import { AdminPage } from '../admin/admin';
+
+
+
 
 import { AlertController } from 'ionic-angular';
 
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { MemberPage } from '../member/member';
+
 
 
 
@@ -116,7 +113,7 @@ export class LoginPage {
   }
 
   goRegisterPage() {
-    this.navCtrl.push(RegisterPage);
+    this.navCtrl.push("RegisterPage");
   }
 
   checkStatus() {
@@ -124,12 +121,12 @@ export class LoginPage {
       if (user) {
         // User is signed in.
         if(this.email == "admin@hotmail.com" && this.password=="123456"){
-          this.navCtrl.setRoot(MemberPage)
+          this.navCtrl.setRoot("MemberPage")
         }
         else if (user.displayName == "member") {
-          this.navCtrl.setRoot(HomePage);
+          this.navCtrl.setRoot("Home");
         } else if (user.displayName == "admin") {
-          this.navCtrl.setRoot(AdminPage);
+          this.navCtrl.setRoot("AdminPage");
         }
 
         console.log("this user: " + user.displayName)

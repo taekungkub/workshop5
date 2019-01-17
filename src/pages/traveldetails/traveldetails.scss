@@ -1,0 +1,67 @@
+page-traveldetails {
+
+    img { 
+        max-width: 100%; 
+        height: auto; 
+        margin:auto;
+        display:block
+    }
+
+    ion-slides.slides {
+        height: auto;
+        bottom: 0px;
+      }
+
+
+     
+   
+     
+      #contact h1 {
+      background: #a3cc27;
+      font-family: Oswald ,sans-serif;
+      font-size: 1.75em;
+      padding: 0.6em 0 0.6em 0.4em;
+      color: white;
+      text-shadow: 0 0.06em 0 #424242;
+      position: relative;
+      }
+      .contactbutton {
+      background: #a3cc27;
+     
+      text-align: center;
+      display: block;
+      width: 100%;
+      height: 50px;
+      margin-top: 20px;
+      margin-bottom: 2px;
+      cursor: pointer;
+      }
+     
+      #checkcontact{
+      position: absolute;
+      left: -9999px;
+      }
+      .contactform {
+      overflow: hidden;
+      max-height: 0px;
+      -webkit-transition: all linear 1s;
+      -moz-transition: all linear 1s;
+      -o-transition: all linear 1s;
+      -ms-transition: all linear 1s;
+      transition: all linear 1s;
+      }
+      #checkcontact:checked + .contactform {
+      max-height: 1000px;
+      }
+
+      @media (max-width: 500px){
+      #contact {
+      width: 100%;
+      }
+        .input_wrapper label {
+      line-height: 3.5em;
+      font-size: 0.8em;
+      }
+      }
+
+}

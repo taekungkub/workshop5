@@ -31,7 +31,7 @@
   -->
 
   
-  <div class="w3-text-white w3-large" *ngFor="let item of items | async" (click)="goWatdetailsPage(item)">
+  <div class="w3-text-white w3-large" *ngFor="let item of itemsWat | async" (click)="goWatdetailsPage(item)">
       <div class="w3-margin-bottom">
         <div class="w3-display-container">
           <img src="{{item.payload.val().imageURL}}"

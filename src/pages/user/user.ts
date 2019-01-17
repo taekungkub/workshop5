@@ -5,9 +5,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from "firebase";
 import { AngularFireAuthModule , AngularFireAuth  } from 'angularfire2/auth';
 
-import { LoginPage } from '../login/login';
-import { HomePage } from '../home/home';
-import { TabsPage } from '../tabs/tabs';
 
 
 /**
@@ -40,7 +37,7 @@ export class UserPage {
   }
 
   LogoutOfFacebook() {
-    this.navCtrl.push(LoginPage)
+    this.navCtrl.push("LoginPage")
   }
 
 

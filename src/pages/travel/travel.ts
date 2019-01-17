@@ -4,16 +4,13 @@ import { IonicPage, NavController, NavParams , LoadingController} from 'ionic-an
 import { AngularFireDatabaseModule , AngularFireDatabase  } from 'angularfire2/database';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
-
 import 'rxjs/add/operator/map';
-
 import { Observable } from 'rxjs';
-
 import { map } from 'rxjs/operators';
 
 
 /**
- * Generated class for the WatPage page.
+ * Generated class for the TravelPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -21,12 +18,11 @@ import { map } from 'rxjs/operators';
 
 @IonicPage()
 @Component({
-  selector: 'page-wat',
-  templateUrl: 'wat.html',
+  selector: 'page-travel',
+  templateUrl: 'travel.html',
 })
-export class WatPage {
-
-  itemsWat: Observable<any[]>;
+export class TravelPage {
+  itemsTravel: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
             , private storage: AngularFireStorage, public loadingCtrl: LoadingController) {
@@ -36,11 +32,11 @@ export class WatPage {
     spinner: 'circles',
     content: 'Please wait...',
    });
-   loading.present().then(() => {
-    this.itemsWat = db.list('/wat', ref => ref.orderByChild('title'))
-      .snapshotChanges().map(result => {
-        return result.reverse();
-      })
+   loading.present().then(()=>{
+    this.itemsTravel = db.list('/travel' , ref =>ref.orderByChild('title'))
+    .snapshotChanges().map(result => {
+      return result.reverse();
+    })
     loading.dismiss();
    })
  
@@ -53,11 +49,11 @@ export class WatPage {
 
   ionViewDidLoad() {
     console.log('WatPage');
-    console.log(this.itemsWat);
+    console.log(this.itemsTravel);
 
   }
 
-  goWatdetailsPage(item){
+  goTraveldetailsPage(item){
     let data = {
 
     title: item.payload.val().title,
@@ -70,9 +66,9 @@ export class WatPage {
     imageURL2 : item.payload.val().imageURL2,
     imageURL3 : item.payload.val().imageURL3
     }
-    this.navCtrl.push("WatdetailsPage",data);
+    this.navCtrl.push("TraveldetailsPage",data);
     console.log("Item Key" + item)
 
   }
-
 }
+

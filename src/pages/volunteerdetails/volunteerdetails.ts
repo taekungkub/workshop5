@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , LoadingController } from 'ionic-angular';
 
 /**
- * Generated class for the WatdetailsPage page.
+ * Generated class for the VolunteerdetailsPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -10,10 +10,10 @@ import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-an
 
 @IonicPage()
 @Component({
-  selector: 'page-watdetails',
-  templateUrl: 'watdetails.html',
+  selector: 'page-volunteerdetails',
+  templateUrl: 'volunteerdetails.html',
 })
-export class WatdetailsPage {
+export class VolunteerdetailsPage {
   item;
   title:string;
   name:string;

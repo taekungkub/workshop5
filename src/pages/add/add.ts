@@ -12,19 +12,6 @@ import { finalize } from 'rxjs/operators';
 import { AlertController } from 'ionic-angular';
 
 
-
-import { WatPage } from '../wat/wat';
-import { VolunteerPage } from '../volunteer/volunteer';
-
-
-
-/**
- * Generated class for the AddPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
 @IonicPage()
 @Component({
   selector: 'page-add',
@@ -90,7 +77,7 @@ export class AddPage {
         alert.present();
         let itemRef = this.db.list('wat');
         itemRef.push(this.student)
-        this.navCtrl.push(WatPage);
+        this.navCtrl.push("WatPage");
       }
  
     } else if (this.student.type == "volunteer") {
@@ -110,9 +97,28 @@ export class AddPage {
         alert.present();
         let itemRef = this.db.list('volunteer');
         itemRef.push(this.student)
-        this.navCtrl.push(VolunteerPage);
+        this.navCtrl.push("VolunteerPage");
         }
-      }
+      } else if (this.student.type == "travel") {
+        if(this.student.title == "" && this.student.name == ""){
+          let alert = this.alertCtrl.create({
+            title: '',
+            subTitle: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+            buttons: ['Dismiss']
+          });
+          alert.present();
+        } else { 
+          let alert = this.alertCtrl.create({
+            title: '',
+            subTitle: 'เพิ่มข้อมูลสำเร็จแล้ว',
+            buttons: ['OK']
+          });
+          alert.present();
+          let itemRef = this.db.list('travel');
+          itemRef.push(this.student)
+          this.navCtrl.push("TravePage");
+          }
+        }
 
 
       else if (this.student.type == "Default") {

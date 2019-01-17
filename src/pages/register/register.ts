@@ -58,16 +58,7 @@ export class RegisterPage {
     } else if (this.password == null) {
       this.alert("กรุณากรอกรหัสผ่าน")
     } else {
-      let itemRef = this.db.list('user');
-      itemRef.push({
-        fullname: this.fullname,
-        email: this.email,
-        password: this.password,
 
-        status: "member",
-      })
-
-      console.log("Insert Success")
       this.signUp();
     }
 
@@ -82,6 +73,16 @@ export class RegisterPage {
 
       });
       loading.present().then(() => {
+        let itemRef = this.db.list('user');
+        itemRef.push({
+          fullname: this.fullname,
+          email: this.email,
+          password: this.password,
+          photoURL:"https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55",
+          status: "member",
+        })
+
+        console.log("Insert Success")
         this.updataMember();
         this.alert("Success! You're registration")
       })

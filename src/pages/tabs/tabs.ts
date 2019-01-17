@@ -2,8 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
-import { HomePage } from '../home/home';
-import { UserPage } from '../user/user';
+
 
 
 /**
@@ -29,8 +28,8 @@ export class TabsPage {
     this.facebook = params.data.facebook;
   }
 
-  tab1Root: any = HomePage;
-  tab2Root = UserPage;
+  tab1Root: any = "HomePage";
+  tab2Root = "UserPage";
   
   dashboardParams: any = {
     facebook: this.navParams.get('facebook')

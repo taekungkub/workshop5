@@ -4,10 +4,7 @@ import { IonicPage, NavController, NavParams ,AlertController ,LoadingController
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
 import * as firebase from "firebase";
 
-import { HomePage } from '../home/home';
-import { EditPage } from '../edit/edit';
-import { LoginPage } from '../login/login';
-import { AddPage } from '../add/add';
+
 
 
 @IonicPage()
@@ -42,10 +39,10 @@ export class AdminPage {
   }
 
   goHomePage(){
-    this.navCtrl.push(HomePage);
+    this.navCtrl.push("Home");
   }
   goEditPage(){
-    this.navCtrl.push(EditPage);
+    this.navCtrl.push("EditPage");
   }
 
   
@@ -56,13 +53,13 @@ export class AdminPage {
   } */
 
   goAddPage(){
-    this.navCtrl.push(AddPage);
+    this.navCtrl.push("AddPage");
   }
 
   Logout(){
     firebase.auth().signOut().then((result)=> {
       this.alert("ออกจากระบบเรียบร้อย")
-      this.navCtrl.setRoot(LoginPage)
+      this.navCtrl.setRoot("LoginPage")
     }).catch(function(error) {
       // An error happened.
     });

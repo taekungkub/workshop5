@@ -3,14 +3,55 @@
       <button ion-button menuToggle>
         <ion-icon name="menu"></ion-icon>
       </button>
+    
       <ion-title>สมาชิก</ion-title>
+   
     </ion-navbar>
+
   </ion-header>
 
 <ion-content padding>
 
-   <!--สมาชิก-->
+    <div>
+        <form>
+            <!--Fullname-->
+        <div class="form-group">
+           <label for="fullname">ชื่อ-นามสกุล</label>
+           <input name="fullname" type="text" class="form-control" id="fullname" placeholder="Name" [(ngModel)]="fullname">
+         </div>
+       
+         <!--email-->
+         <div class="form-group">
+           <label for="email">อีเมลล์</label>
+           <input name="email" type="email" class="form-control" id="email" placeholder="Email address" [(ngModel)]="email">
+         </div>
+       
+         <!--password-->
+         <div class="form-group">
+           <label for="password">รหัสผ่าน</label>
+           <input name="password" type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password">
+         </div>
+       
+          <button ion-button (click)="registerAdmin()">ยืนยัน</button>
+         </form>
+       
+    </div>
 
+     <!--admin-->
+    <ion-item-divider color="wat">ผู้ดูแลระบบ</ion-item-divider>
+   <ion-list>
+      <ion-item  *ngFor="let item of itemsAdmin | async ">
+          <ion-avatar item-start>
+              <img src="{{item.payload.val().photoURL}}">
+          </ion-avatar>
+          <h2>{{item.payload.val().email}}</h2>
+          <p>สถานนะ: {{item.payload.val().status}}</p>
+          <button ion-button outline item-end (click)="deleteAdmin(item)" color="danger">delete</button>
+      </ion-item>
+</ion-list>
+
+   <!--สมาชิก-->
+   <ion-item-divider color="wat"> สมาชิก</ion-item-divider>
    <ion-list>
            <ion-item  *ngFor="let item of itemsUser | async">
                <ion-avatar item-start>
