@@ -25,6 +25,7 @@ export class Home {
   itemProduct: Observable<any[]>;
   itemProduct2: Observable<any[]>;
   itemProduct3: Observable<any[]>;
+  itemProduct4: Observable<any[]>;
   
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
@@ -48,6 +49,11 @@ export class Home {
       })
 
       this.itemProduct3 = db.list('/product3', ref => ref.orderByChild('title'))
+      .snapshotChanges().map(result => {
+        return result.reverse();
+      })
+
+      this.itemProduct4 = db.list('/product4', ref => ref.orderByChild('title'))
       .snapshotChanges().map(result => {
         return result.reverse();
       })
@@ -97,13 +103,28 @@ export class Home {
 
       }))
     } //goWatPage
+
+    goSportPage(item){
+      this.navCtrl.push("SportPage");
+      this.db.object(`product4/${item.key}/view`).query.ref.transaction((view => {
+
+        if (view === null) {
+          return view = 1;
+      } else {
+          return view + 1;
+      }
+
+      }))
+    } //goWatPage
+
+
     
 
     add(){
-      let itemRef = this.db.list('product3');
+      let itemRef = this.db.list('product4');
       let data = {
         image:"",
-        title:"สถานที่ท่องเที่ยว",
+        title:"ศูนย์กีฬา",
         name:"",
         view:30,
       }

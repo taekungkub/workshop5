@@ -34,11 +34,13 @@ export class EditPage {
   itemsWat: Observable<any[]>;
   itemsVolunteer: Observable<any[]>;
   itemsTravel: Observable<any[]>;
+  itemsSport: Observable<any[]>;
 
   AddForm = false;
   updateWatBTN = false;
   updateVolunteerBTN = false
   updateTravelBTN = false
+  updateSportBTN = false
 
 
 
@@ -62,6 +64,10 @@ export class EditPage {
           return result.reverse();
         })
         this.itemsTravel = db.list('/travel', ref => ref.orderByChild('title'))
+        .snapshotChanges().map(result => {
+          return result.reverse();
+        })
+        this.itemsSport = db.list('/sport', ref => ref.orderByChild('title'))
         .snapshotChanges().map(result => {
           return result.reverse();
         })
@@ -184,6 +190,41 @@ export class EditPage {
     alert.present();
   }//onClickDeleteVolunteer
 
+
+  onClickDeleteSport(item) {
+    let alert = this.alertCtrl.create({
+      title: 'ยืนยันการลบ',
+      message: 'คุณต้องการจะลบหรือไม่',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'ยกเลิก',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'ยืนยัน',
+          handler: () => {
+            console.log('Comfirm delete');
+
+            console.log("key" + JSON.stringify(item));
+            let itemRef = this.db.list('travel');
+            itemRef.remove(item.key);
+            if (this.student.imageName) {
+              var desertRef = this.storage.ref(item.payload.val().imageName);
+              desertRef.delete().subscribe(() => {
+                console.log("deleted")
+              })
+            }
+            this.toast2("")
+          }
+        }
+      ]
+    });
+    alert.present();
+  }//onClickDeleteVolunteer
+
   goEditDetailsPage(item) {
     this.navCtrl.push("EditdetailsPage", { item: item });
     console.log("Item Key" + this.student.title)
@@ -218,6 +259,7 @@ export class EditPage {
     this.updateWatBTN = true;
     this.updateVolunteerBTN = false;
     this.updateTravelBTN = false;
+    this.updateSportBTN = false;
 
     console.log(item.key)
 
@@ -252,6 +294,7 @@ export class EditPage {
     this.updateVolunteerBTN = true;
     this.updateWatBTN = false;
     this.updateTravelBTN = false;
+    this.updateSportBTN = false;
 
     console.log(item.key)
   }
@@ -285,10 +328,47 @@ export class EditPage {
     this.updateTravelBTN = true
     this.updateVolunteerBTN = false;
     this.updateWatBTN = false;
+    this.updateSportBTN = false;
     
 
     console.log(item.key)
   } //editTravel
+
+  editSport(item) {
+
+    this.student.key = item.key
+    this.student.title = item.payload.val().title;
+    this.student.name = item.payload.val().name;
+
+    this.student.time = item.payload.val().time;
+    this.student.call = item.payload.val().call;
+    this.student.address = item.payload.val().call;
+    this.student.desc = item.payload.val().desc;
+    this.student.track = item.payload.val().track;
+
+    //Image
+    this.student.imageName = item.payload.val().imageName;
+    this.student.imageURL = item.payload.val().imageURL;
+
+    this.student.imageName2 = item.payload.val().imageName2;
+    this.student.imageURL2 = item.payload.val().imageURL2;
+
+    this.student.imageName3 = item.payload.val().imageName3;
+    this.student.imageURL3 = item.payload.val().imageURL3;
+
+    this.student.imageName4 = item.payload.val().imageName4;
+    this.student.imageURL4 = item.payload.val().imageURL4;
+
+    this.AddForm = true;
+    this.updateSportBTN = true
+    this.updateVolunteerBTN = false;
+    this.updateWatBTN = false;
+    this.updateTravelBTN = false
+    
+
+    console.log(item.key)
+  } //editSport
+
 
 
   toast(message: string) {
@@ -323,6 +403,15 @@ export class EditPage {
 
   updateTravel(item) {
     let itemRef = this.db.list('travel');
+    itemRef.update(this.student.key, this.student);
+
+    this.AddForm = false;
+    this.toast("")
+
+  } //updateTravel
+
+  updateSport(item) {
+    let itemRef = this.db.list('sport');
     itemRef.update(this.student.key, this.student);
 
     this.AddForm = false;

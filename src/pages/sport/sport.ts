@@ -4,13 +4,15 @@ import { IonicPage, NavController, NavParams , LoadingController} from 'ionic-an
 import { AngularFireDatabaseModule , AngularFireDatabase  } from 'angularfire2/database';
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
+
 import 'rxjs/add/operator/map';
+
 import { Observable } from 'rxjs';
+
 import { map } from 'rxjs/operators';
 
-
 /**
- * Generated class for the TravelPage page.
+ * Generated class for the SportPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -18,11 +20,11 @@ import { map } from 'rxjs/operators';
 
 @IonicPage()
 @Component({
-  selector: 'page-travel',
-  templateUrl: 'travel.html',
+  selector: 'page-sport',
+  templateUrl: 'sport.html',
 })
-export class TravelPage {
-  itemsTravel: Observable<any[]>;
+export class SportPage {
+  itemsSport: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
             , private storage: AngularFireStorage, public loadingCtrl: LoadingController) {
@@ -32,11 +34,11 @@ export class TravelPage {
     spinner: 'circles',
     content: 'Please wait...',
    });
-   loading.present().then(()=>{
-    this.itemsTravel = db.list('/travel' , ref =>ref.orderByChild('title'))
-    .snapshotChanges().map(result => {
-      return result.reverse();
-    })
+   loading.present().then(() => {
+    this.itemsSport = db.list('/sport', ref => ref.orderByChild('title'))
+      .snapshotChanges().map(result => {
+        return result.reverse();
+      })
     loading.dismiss();
    })
  
@@ -48,12 +50,10 @@ export class TravelPage {
   
 
   ionViewDidLoad() {
-    console.log('WatPage');
-    console.log(this.itemsTravel);
-
+    console.log('SportPage');
   }
 
-  goTraveldetailsPage(item){
+  goSportDetails(item){
     let data = {
 
     title: item.payload.val().title,
@@ -64,12 +64,13 @@ export class TravelPage {
     track : item.payload.val().track,
     imageURL:item.payload.val().imageURL,
     imageURL2 : item.payload.val().imageURL2,
-    imageURL3 : item.payload.val().imageURL3
+    imageURL3 : item.payload.val().imageURL3,
+    imageURL4 : item.payload.val().imageURL4
     }
-    this.navCtrl.push("TraveldetailsPage",data);
+    this.navCtrl.push("SportDetails",data);
     console.log("Item Key" + item)
 
-    this.db.object(`travel/${item.key}/view`).query.ref.transaction((view => {
+    this.db.object(`sport/${item.key}/view`).query.ref.transaction((view => {
 
       if (view === null) {
         return view = 1;
@@ -79,6 +80,7 @@ export class TravelPage {
 
     }))
 
-  }
-}
 
+  } //goSportDetails
+
+} //class

@@ -1,8 +1,12 @@
-<ion-header>
-    <ion-navbar>
-        <ion-title>แก้ไข</ion-title>
+<ion-header >
+    <ion-navbar color="title2">
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>แก้ไข</ion-title>
     </ion-navbar>
-</ion-header>
+  </ion-header>
+
 <ion-content padding>
     <form *ngIf="AddForm">
         <!--title-->
@@ -46,7 +50,8 @@
         <button ion-button  *ngIf="updateWatBTN" (click)="updateWat(item)" class="w3-padding">ยืนยัน</button>
         <button ion-button  *ngIf="updateVolunteerBTN" (click)="updateVolunteer(item)" class="w3-padding">ยืนยัน</button>
         <button ion-button  *ngIf="updateTravelBTN" (click)="updateTravel(item)" class="w3-padding">ยืนยัน</button>
- 
+        <button ion-button  *ngIf="updateSportBTN" (click)="updateSport(item)" class="w3-padding">ยืนยัน</button>
+
         <button ion-button (click)="dismissUpdate()" class="w3-padding">ยกเลิก</button>
     </form>
     
@@ -123,6 +128,32 @@
             </ion-item-options>
         </ion-item-sliding>
     </ion-list>
+
+
+    <ion-item-divider color="sport">ศูนย์กีฬา</ion-item-divider>
+    <ion-list *ngFor="let item of itemsSport | async">
+        <ion-item-sliding>
+            <ion-item>
+                <ion-avatar item-start>
+                    <img src="{{item.payload.val().imageURL}}">
+                </ion-avatar>
+                <h2>{{item.payload.val().title}}</h2>
+                <p>{{item.payload.val().name}}</p>
+            </ion-item>
+
+            <ion-item-options side="right">
+                <button ion-button color="dark" (click)="editSport(item)">
+                    <ion-icon name="md-create"></ion-icon>
+                    Edit
+                </button>
+                <button ion-button color="danger" (click)="onClickDeleteSport(item)">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
 
 
 </ion-content>

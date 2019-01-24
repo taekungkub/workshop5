@@ -120,7 +120,28 @@ export class AddPage {
           itemRef.push(this.student)
           this.navCtrl.push("TravelPage");
           }
-        }
+        } 
+
+        else if (this.student.type == "sport") {
+          if(this.student.title == "" && this.student.name == ""){
+            let alert = this.alertCtrl.create({
+              title: '',
+              subTitle: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+              buttons: ['Dismiss']
+            });
+            alert.present();
+          } else { 
+            let alert = this.alertCtrl.create({
+              title: '',
+              subTitle: 'เพิ่มข้อมูลสำเร็จแล้ว',
+              buttons: ['OK']
+            });
+            alert.present();
+            let itemRef = this.db.list('sport');
+            itemRef.push(this.student)
+            this.navCtrl.push("SportPage");
+            }
+          }
 
 
       else if (this.student.type == "Default") {

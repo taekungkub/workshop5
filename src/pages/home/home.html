@@ -76,9 +76,33 @@
      </div>
      </div>
 
-    <!-- test
+     <div style="margin: 5px;"></div>
 
-         <button ion-button (click)="add()">like</button>
+     <div *ngFor="let item of itemProduct4 | async">
+        <div class="w3-display-container" style="text-align: center" (click)="goSportPage(item)" >
+           <img src="https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/4.png?alt=media&token=a5036aa7-3eef-492d-86c1-ef6be0247720"
+              alt="" style="width:100%" class="w3-round ">
+           <div class="w3-display-middle w3-black" style="opacity:0.4;width:100%;height: 100%">
+           </div>
+           <div class="w3-display-middle ">
+              <h3 style="color:white;" >
+                 <b style="font-size: 36px" class="">ศูนย์กีฬา</b>
+                 <b><br>ก้าวแรกของความสำเร็จ เริ่มจากสุขภาพที่ดี</b>
+                 <div class="w3-display-bottom">
+                 </div>
+              </h3>
+              <div >
+                 <ion-icon name="md-eye" style="color:white;"> <span>{{item.payload.val().view}}</span>
+                 </ion-icon>
+              </div>
+           </div>
+        </div>
+     </div>
+
+
+   <!--
+
+           <button ion-button (click)="add()">like</button>
       <div *ngFor="let item of itemProduct | async">
   
           <h1 >{{item.payload.val().title}}</h1>
@@ -90,7 +114,9 @@
           <button ion-button (click)="incrementLike(item)">กดไลค์</button>
   
         </div>
-    -->
+   -->
+  
+
    
 
   </ion-content>

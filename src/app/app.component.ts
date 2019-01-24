@@ -25,7 +25,8 @@ export class MyApp {
       { title: 'หน้าแรก',icon: 'md-home', component: "Home" },
       { title: 'เข้าสู่ระบบ',icon: 'md-hand', component: "LoginPage" },
       { title: 'เพิ่มข้อมูล',icon: 'md-add', component: "AddPage" },
-      { title: 'แก้ไข',icon: 'md-add', component: "EditPage" },
+      { title: 'แก้ไข',icon: 'construct', component: "EditPage" },
+      { title: 'เกี่ยวกับเทศบาล',icon: 'document', component: "AboutPage" },
       { title: 'ติดต่อ',icon: 'md-contact', component: "ContactPage" },
     ];
 

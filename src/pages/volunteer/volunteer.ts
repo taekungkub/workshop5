@@ -54,11 +54,21 @@ export class VolunteerPage {
       track : item.payload.val().track,
       imageURL:item.payload.val().imageURL,
       imageURL2 : item.payload.val().imageURL2,
-      imageURL3 : item.payload.val().imageURL3
+      imageURL3 : item.payload.val().imageURL3,
+      imageURL4 : item.payload.val().imageURL4
       }
       this.navCtrl.push("VolunteerdetailsPage",data);
       console.log("Item Key" + item)
   
+      this.db.object(`volunteer/${item.key}/view`).query.ref.transaction((view => {
+
+        if (view === null) {
+          return view = 1;
+      } else {
+          return view + 1;
+      }
+
+      }))
 
   }
 }
