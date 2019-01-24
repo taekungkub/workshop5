@@ -46,6 +46,9 @@
     <ion-item>
         <input type="file" (change)="uploadFile3($event)" />
       </ion-item>
+      <ion-item>
+        <input type="file" (change)="uploadFile4($event)" />
+      </ion-item>
 
     <ion-item-group>
 
@@ -74,6 +77,15 @@
       <div class="image">
         <img src="{{ downloadURL3 | async }}">
       </div>
+
+      
+    <div *ngIf="uploadPercent4 | async as pct">
+      <progress class="progress is-info" [value]="pct" max="100"></progress>
+      {{ pct | number }}%
+    </div>
+    <div class="image">
+      <img src="{{ downloadURL4 | async }}">
+    </div>
   
 
 
@@ -84,7 +96,7 @@
     <!--title-->
     <div class="form-group">
       <label for="title">ชื่อสถานที่</label>
-      <input name="title" type="text" class="form-control" id="title" placeholder="example วัดเขียนเขต..." [(ngModel)]="student.title">
+      <input name="title" type="text" class="form-control" id="title" placeholder="" [(ngModel)]="student.title">
     </div>
 
     <!--name-->
@@ -102,13 +114,21 @@
     <!--call-->
     <div class="form-group">
       <label for="call">เบอร์ติดต่อ</label>
-      <input name="call" type="text" class="form-control" id="call" placeholder="094-870-9999" [(ngModel)]="student.call">
+      <input name="call" type="text" class="form-control" id="call" placeholder="" [(ngModel)]="student.call">
     </div>
+
+        <!--address-->
+        <div class="form-group">
+          <label for="address">ที่อยู่</label>
+          <input name="address" type="text" class="form-control" id="address" placeholder="" [(ngModel)]="student.address">
+        </div>
+
+    
 
     <!--desc-->
     <div class="form-group">
       <label for="desc">รายละเอียด</label>
-      <textarea name="desc" type="text" rows="5" class="form-control" id="desc" placeholder="เลขที่ 98 ริมฝั่งคลองรังสิตประยูรศักดิ์ หมู่ 3 ตำบลบึงยี่โถ อำเภอธัญบุรี จังหวัดประทุมธานี"
+      <textarea name="desc" type="text" rows="5" class="form-control" id="desc" placeholder=""
         [(ngModel)]="student.desc"></textarea>
     </div>
 

@@ -5,6 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { tap } from 'rxjs/operators';
 import 'rxjs/add/operator/map';
+
 import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { finalize } from 'rxjs/operators';
@@ -196,6 +197,7 @@ export class EditPage {
 
     this.student.time = item.payload.val().time;
     this.student.call = item.payload.val().call;
+    this.student.address = item.payload.val().call;
     this.student.desc = item.payload.val().desc;
     this.student.track = item.payload.val().track;
 
@@ -209,12 +211,16 @@ export class EditPage {
     this.student.imageName3 = item.payload.val().imageName3;
     this.student.imageURL3 = item.payload.val().imageURL3;
 
+    this.student.imageName4 = item.payload.val().imageName4;
+    this.student.imageURL4 = item.payload.val().imageURL4;
+
     this.AddForm = true;
     this.updateWatBTN = true;
     this.updateVolunteerBTN = false;
     this.updateTravelBTN = false;
 
     console.log(item.key)
+
   }
 
   editVolunteer(item) {
@@ -225,6 +231,7 @@ export class EditPage {
 
     this.student.time = item.payload.val().time;
     this.student.call = item.payload.val().call;
+    this.student.address = item.payload.val().call;
     this.student.desc = item.payload.val().desc;
     this.student.track = item.payload.val().track;
 
@@ -237,6 +244,9 @@ export class EditPage {
 
     this.student.imageName3 = item.payload.val().imageName3;
     this.student.imageURL3 = item.payload.val().imageURL3;
+
+    this.student.imageName4 = item.payload.val().imageName4;
+    this.student.imageURL4 = item.payload.val().imageURL4;
 
     this.AddForm = true;
     this.updateVolunteerBTN = true;
@@ -254,6 +264,7 @@ export class EditPage {
 
     this.student.time = item.payload.val().time;
     this.student.call = item.payload.val().call;
+    this.student.address = item.payload.val().call;
     this.student.desc = item.payload.val().desc;
     this.student.track = item.payload.val().track;
 
@@ -266,6 +277,9 @@ export class EditPage {
 
     this.student.imageName3 = item.payload.val().imageName3;
     this.student.imageURL3 = item.payload.val().imageURL3;
+
+    this.student.imageName4 = item.payload.val().imageName4;
+    this.student.imageURL4 = item.payload.val().imageURL4;
 
     this.AddForm = true;
     this.updateTravelBTN = true
@@ -290,9 +304,12 @@ export class EditPage {
     itemRef.update(this.student.key, this.student);
     this.AddForm = false;
 
+  
     this.toast("")
 
   } //updateWat
+
+ 
 
   updateVolunteer(item) {
     let itemRef = this.db.list('volunteer');
@@ -322,12 +339,13 @@ export class EditPage {
 } //class
 
 class Student {
-  type = "Default"
+
   key = "";
   title = "";
   name = "";
   time = "";
   call = "";
+  address = "";
   desc = "";
   track = "";
   imageName = "";
@@ -338,6 +356,9 @@ class Student {
 
   imageName3 = "";
   imageURL3 = "";
+
+  imageName4 = "";
+  imageURL4 = "";
 
   timestamp = Date.now();
 }

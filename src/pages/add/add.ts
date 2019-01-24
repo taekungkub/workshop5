@@ -33,10 +33,12 @@ export class AddPage {
   uploadPercent: Observable<number>;
   uploadPercent2: Observable<number>;
   uploadPercent3: Observable<number>;
+  uploadPercent4: Observable<number>;
 
   downloadURL: Observable<string>;
   downloadURL2: Observable<string>;
   downloadURL3: Observable<string>;
+  downloadURL4: Observable<string>;
   //Download URL
   isUploaded: boolean = false;
   items: Observable<any[]>;
@@ -116,7 +118,7 @@ export class AddPage {
           alert.present();
           let itemRef = this.db.list('travel');
           itemRef.push(this.student)
-          this.navCtrl.push("TravePage");
+          this.navCtrl.push("TravelPage");
           }
         }
 
@@ -139,6 +141,7 @@ export class AddPage {
     this.student.name = "";
     this.student.time = "";
     this.student.call = "";
+    this.student.address = "";
     this.student.desc = "";
     this.student.track = "";
 
@@ -150,6 +153,9 @@ export class AddPage {
 
     this.student.imageName3 = "";
     this.student.imageURL3 = "";
+
+    this.student.imageName4 = "";
+    this.student.imageURL4 = "";
 
   } //onClickSubmit
 
@@ -242,6 +248,31 @@ export class AddPage {
       .subscribe();
   } //Upload File3
 
+  uploadFile4(event) {
+    const file = event.target.files[0];
+    if (file.type.split('/')[0] !== 'image') {
+      console.error('unsupported file type :( ')
+      return
+    }
+    const filePath = `wat/${new Date().getTime()}_${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+
+    this.uploadPercent4 = task.percentageChanges();
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadURL4 = fileRef.getDownloadURL()
+        this.downloadURL4.subscribe((url) => {
+          this.student.imageURL4 = url
+          this.student.imageName4 = filePath
+        });
+      })
+    )
+      .subscribe();
+  } //Upload File4
+
 
 
 } //class
@@ -252,6 +283,7 @@ class Student {
   name = "";
   time = "";
   call = "";
+  address = "";
   desc = "";
   track = "";
   imageName = "";
@@ -262,6 +294,9 @@ class Student {
 
   imageName3 = "";
   imageURL3= "";
+
+  imageName4 = "";
+  imageURL4= "";
 
   timestamp = Date.now();
 }
