@@ -38,16 +38,17 @@ $colors: (
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark:       #222,
+  dark:       #2F4047,
 
-  title2:     #2892c6,
+  title2:     #00A1B3,
   titleAdd: #373b43,
+  sideMenu: #eff2f7,
 
 
-  wat: #2892c6,
-  volunteer: #F2385A,
-  travel: #bce213,
-  sport: #ffbb00,
+  wat: #ffbb00,
+  volunteer: #F45152,
+  travel: #BCCF3E,
+  sport: #49B1B0,
 
 );
 
@@ -107,6 +108,13 @@ $colors: (
   src: url('../assets/fonts/FC Lamoon/FC Lamoon Bold ver 1.00.ttf');
 }
 
-h1,h2  {
+
+
+h1,h2,{
   font-family: "FClamoon" !important;
   }
+
+  
+
+
+

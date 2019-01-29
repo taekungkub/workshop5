@@ -14,6 +14,7 @@ import { AlertController } from 'ionic-angular';
 import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import 'rxjs/add/operator/map';
 
 
 

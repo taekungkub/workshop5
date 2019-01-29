@@ -47,12 +47,12 @@
             <label for="track">เส้นทาง</label>
             <input name="track" type="text" class="form-control" id="track" placeholder="link google map" [(ngModel)]="student.track">
         </div>
-        <button ion-button  *ngIf="updateWatBTN" (click)="updateWat(item)" class="w3-padding">ยืนยัน</button>
-        <button ion-button  *ngIf="updateVolunteerBTN" (click)="updateVolunteer(item)" class="w3-padding">ยืนยัน</button>
-        <button ion-button  *ngIf="updateTravelBTN" (click)="updateTravel(item)" class="w3-padding">ยืนยัน</button>
-        <button ion-button  *ngIf="updateSportBTN" (click)="updateSport(item)" class="w3-padding">ยืนยัน</button>
+        <button ion-button color="title2"  *ngIf="updateWatBTN" (click)="updateWat(item)" class="w3-padding">ยืนยัน</button>
+        <button ion-button  color="title2"  *ngIf="updateVolunteerBTN" (click)="updateVolunteer(item)" class="w3-padding">ยืนยัน</button>
+        <button ion-button  color="title2"  *ngIf="updateTravelBTN" (click)="updateTravel(item)" class="w3-padding">ยืนยัน</button>
+        <button ion-button  color="title2"  *ngIf="updateSportBTN" (click)="updateSport(item)" class="w3-padding">ยืนยัน</button>
 
-        <button ion-button (click)="dismissUpdate()" class="w3-padding">ยกเลิก</button>
+        <button ion-button color="title2"  (click)="dismissUpdate()" class="w3-padding">ยกเลิก</button>
     </form>
     
     <!--วัด-->

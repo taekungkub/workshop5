@@ -17,7 +17,7 @@
 
   <div class="test">
     <div class="w3-text-white w3-large" *ngFor="let item of itemsVolunteer | async" (click)="goVolunteerDetails(item)">
-        <div class="w3-margin-bottom">
+        <div>
           <div class="w3-display-container">
             <img src="{{item.payload.val().imageURL}}"
               alt="" style="width:100%" class="w3-round">
