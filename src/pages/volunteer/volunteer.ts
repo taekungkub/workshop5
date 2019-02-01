@@ -32,11 +32,14 @@ export class VolunteerPage {
            });
            loading.present().then(()=>{
             this.itemsVolunteer = db.list('/volunteer' , ref =>ref.orderByChild('title'))
-            .snapshotChanges().map(result => {
-              return result.reverse();
-            })
+            .snapshotChanges()
             loading.dismiss();
            })
+
+           /*.map(result => {
+              return result.reverse();
+            })*/
+
   } //constructor
 
   ionViewDidLoad() {

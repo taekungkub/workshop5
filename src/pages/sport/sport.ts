@@ -36,12 +36,14 @@ export class SportPage {
    });
    loading.present().then(() => {
     this.itemsSport = db.list('/sport', ref => ref.orderByChild('title'))
-      .snapshotChanges().map(result => {
-        return result.reverse();
-      })
+      .snapshotChanges()
     loading.dismiss();
    })
  
+     /*.map(result => {
+              return result.reverse();
+       })*/
+
   } //constructor
   /*  this.items = db.list('/wat', ref => ref.orderByChild('name').equalTo("วัดมูลจิลดาราม")).valueChanges(); */
 

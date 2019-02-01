@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -28,6 +28,9 @@ import { ToastController } from 'ionic-angular';
 })
 export class EditPage {
 
+
+  
+
   Student: any;
   student: Student = new Student();
 
@@ -43,8 +46,6 @@ export class EditPage {
   updateSportBTN = false
 
 
-
-
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase,
     private storage: AngularFireStorage, private alertCtrl: AlertController, private toastCtrl: ToastController
     , public loadingCtrl: LoadingController) {
@@ -55,29 +56,27 @@ export class EditPage {
     });
     loading.present().then(() => {
       this.itemsWat = db.list('/wat', ref => ref.orderByChild('title'))
-        .snapshotChanges().map(result => {
-          return result.reverse();
-        })
+        .snapshotChanges()
 
       this.itemsVolunteer = db.list('/volunteer', ref => ref.orderByChild('title'))
-        .snapshotChanges().map(result => {
-          return result.reverse();
-        })
+        .snapshotChanges()
+
         this.itemsTravel = db.list('/travel', ref => ref.orderByChild('title'))
-        .snapshotChanges().map(result => {
-          return result.reverse();
-        })
+        .snapshotChanges()
+
         this.itemsSport = db.list('/sport', ref => ref.orderByChild('title'))
-        .snapshotChanges().map(result => {
-          return result.reverse();
-        })
+        .snapshotChanges()
+        
       loading.dismiss();
     }) //loading
+
+
   } //constructor
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EditPage');
   }
+
 
   toast2(message: string) {
     this.toastCtrl.create({
