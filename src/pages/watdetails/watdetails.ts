@@ -20,6 +20,7 @@ export class WatdetailsPage {
   time:string;
   call:string;
   desc:string;
+  address:string;
   track:string;
   imageURL:string;
   imageURL2:string;
@@ -38,6 +39,7 @@ export class WatdetailsPage {
      this.name = this.params.get("name")
      this.time = this.params.get("time")
      this.call = this.params.get("call")
+     this.address = this.params.get("address")
      this.desc = this.params.get("desc")
      this.track = this.params.get("track")
 

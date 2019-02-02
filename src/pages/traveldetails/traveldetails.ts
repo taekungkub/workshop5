@@ -21,6 +21,7 @@ export class TraveldetailsPage {
   name:string;
   time:string;
   call:string;
+  address:string;
   desc:string;
   track:string;
   imageURL:string;
@@ -40,6 +41,7 @@ export class TraveldetailsPage {
      this.name = this.params.get("name")
      this.time = this.params.get("time")
      this.call = this.params.get("call")
+     this.address = this.params.get("address")
      this.desc = this.params.get("desc")
      this.track = this.params.get("track")
 
@@ -54,7 +56,7 @@ export class TraveldetailsPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WatdetailsPage');
+    console.log('ionViewDidLoad TravelPage');
     console.log(this.title)
   }
 }

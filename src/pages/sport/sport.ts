@@ -62,6 +62,7 @@ export class SportPage {
     name : item.payload.val().name,
     time : item.payload.val().time,
     call : item.payload.val().call,
+    address : item.payload.val().address,
     desc : item.payload.val().desc,
     track : item.payload.val().track,
     imageURL:item.payload.val().imageURL,
