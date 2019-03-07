@@ -7,6 +7,8 @@ import { Observable } from 'rxjs/Observable';
 
 import 'rxjs/add/operator/map';
 
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+
 import * as firebase from "firebase";
 
 @IonicPage()
@@ -22,19 +24,23 @@ export class MemberPage {
 
   itemsAdmin: Observable<any[]>;
 
+ 
+
+  displayName:string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
-    , private alertCtrl: AlertController, public loadingCtrl: LoadingController, private toastCtrl: ToastController) {
+    , private alertCtrl: AlertController, public loadingCtrl: LoadingController, private toastCtrl: ToastController
+    ,private fire: AngularFireAuth) {
 
     this.itemsUser = db.list('/user')
-      .snapshotChanges().map(result => {
-        return result.reverse();
-      })
+      .snapshotChanges()
 
     this.itemsAdmin = db.list('/admin')
-      .snapshotChanges().map(result => {
-        return result.reverse();
-      })
+      .snapshotChanges()
 
+    this.email = fire.auth.currentUser.email;
+    this.photoURL = fire.auth.currentUser.photoURL;
+    this.displayName = fire.auth.currentUser.displayName;
   } //constructor
 
 
@@ -232,5 +238,34 @@ export class MemberPage {
     this.toast2("")
 
   } //updateWat
+
+
+  Logout(){
+    firebase.auth().signOut().then((result)=> {
+      this.alert("ออกจากระบบเรียบร้อย")
+      this.navCtrl.setRoot("LoginPage")
+    }).catch(function(error) {
+      // An error happened.
+    });
+  }
+
+  
+
+  AddForm = false;
+  addAdmin(){
+  
+    let loading = this.loadingCtrl.create({
+      spinner: 'circles',
+      content: 'Please wait...',
+    });
+    loading.present().then(() => {
+      this.AddForm = true;
+      loading.dismiss();
+    }) //loadin
+  }
+  hide(){
+    this.AddForm = false;
+  }
+
 
 }

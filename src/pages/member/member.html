@@ -12,7 +12,13 @@
 
 <ion-content padding>
 
-    <div>
+    <div class="container">
+  
+        <div class="float-right">Welcome {{email}} | <button class="btn btn-outline-info" (click)="Logout()">Logout</button></div><br>
+    
+        <button ion-button color="dark" (click)="addAdmin()">เพิ่มผู้ดูแลระบบ</button><br>
+
+    <div *ngIf="AddForm">
         <form>
             <!--Fullname-->
         <div class="form-group">
@@ -32,10 +38,13 @@
            <input name="password" type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password">
          </div>
        
-          <button ion-button (click)="registerAdmin()">ยืนยัน</button>
+          <button ion-button color="sport" (click)="registerAdmin()">ยืนยัน</button>
+          <button ion-button color="sport" (click)="hide()">ยกเลิก</button>
          </form>
        
     </div>
+
+    <br>
 
      <!--admin-->
     <ion-item-divider color="wat">ผู้ดูแลระบบ</ion-item-divider>
@@ -63,6 +72,6 @@
                <button ion-button outline item-end (click)="admin(item)">admin</button>
            </ion-item>
    </ion-list>
-
+</div>
 
 </ion-content>
