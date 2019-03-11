@@ -1,0 +1,49 @@
+<!--
+  Generated template for the ModalPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{fullname}}</ion-title>
+    <ion-buttons end>
+        <button ion-button (click)="closemodal()">
+      Close
+      </button>
+      </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <div>
+        <div class="container">
+          <div class="d-flex justify-content-center h-100 w3-margin">
+            <div class="image_outer_container">
+              <div class="green_icon"></div>
+              <div class="image_inner_container">
+                <img src="{{photoURL}}">
+              </div>
+            </div>
+          </div>  
+        </div>
+    
+        <!--Name-->
+        <div class="profile-usertitle">
+            <div class="profile-usertitle-name">
+             ชื่อ: {{fullname}}
+            </div>
+            <div class="profile-usertitle-name">
+              Email:  {{email}}
+              </div>
+            <div class="profile-usertitle-job">
+              สถานะ: {{status}}
+            </div>
+          </div>
+          </div>
+
+</ion-content>

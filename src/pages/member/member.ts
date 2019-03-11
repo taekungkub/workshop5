@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, AlertController, LoadingController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController
+  , LoadingController, ToastController , ModalController} from 'ionic-angular';
 
 
 import { AngularFireDatabase } from 'angularfire2/database';
@@ -8,6 +9,11 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+
+
+import { map } from 'rxjs/operators';
+
+
 
 import * as firebase from "firebase";
 
@@ -23,14 +29,11 @@ export class MemberPage {
   itemsUser: Observable<any[]>;
 
   itemsAdmin: Observable<any[]>;
-
- 
-
   displayName:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
     , private alertCtrl: AlertController, public loadingCtrl: LoadingController, private toastCtrl: ToastController
-    ,private fire: AngularFireAuth) {
+    ,private fire: AngularFireAuth,public modalController: ModalController) {
 
     this.itemsUser = db.list('/user')
       .snapshotChanges()
@@ -97,6 +100,7 @@ export class MemberPage {
   email: string
   password: string;
   photoURL: string
+  status:string
 
   registerAdmin() {
     if (this.fullname == null) {
@@ -267,5 +271,17 @@ export class MemberPage {
     this.AddForm = false;
   }
 
+   presentModal(item) {
+    let data = {
+      fullname : item.payload.val().fullname,
+      email : item.payload.val().email,
+      status : item.payload.val().status,
+      photoURL : item.payload.val().photoURL,
+      }
+    const modal = this.modalController.create('ModalPage',data)
+    console.log(this.fullname + this.email + this. photoURL + this.status)
+    
+    modal.present();
+  }
 
 }

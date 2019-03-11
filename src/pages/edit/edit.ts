@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController,Content } from 'ionic-angular';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
@@ -12,6 +12,7 @@ import { finalize } from 'rxjs/operators';
 
 import { AlertController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
+import { t } from '@angular/core/src/render3';
 
 
 /**
@@ -28,8 +29,7 @@ import { ToastController } from 'ionic-angular';
 })
 export class EditPage {
 
-
-  
+  @ViewChild(Content) content: Content;
 
   Student: any;
   student: Student = new Student();
@@ -229,6 +229,119 @@ export class EditPage {
     console.log("Item Key" + this.student.title)
   }
 
+  uploadPercent: Observable<number>;
+  downloadURL: Observable<string>;
+
+  uploadPercent2: Observable<number>;
+  downloadURL2: Observable<string>;
+
+  uploadPercent3: Observable<number>;
+  downloadURL3: Observable<string>;
+
+  uploadPercent4: Observable<number>;
+  downloadURL4: Observable<string>;
+  
+  uploadFile(event) {
+    const file = event.target.files[0];
+    if (file.type.split('/')[0] !== 'image') {
+      console.error('unsupported file type :( ')
+      return
+    }
+    const filePath = `wat/${new Date().getTime()}_${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+
+    this.uploadPercent = task.percentageChanges();
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadURL = fileRef.getDownloadURL()
+        this.downloadURL.subscribe((url) => {
+          this.student.imageURL = url
+          this.student.imageName = filePath
+        });
+      })
+    )
+      .subscribe();
+  } //Upload File
+
+  uploadFile2(event) {
+    const file = event.target.files[0];
+    if (file.type.split('/')[0] !== 'image') {
+      console.error('unsupported file type :( ')
+      return
+    }
+    const filePath = `wat/${new Date().getTime()}_${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+
+    this.uploadPercent2 = task.percentageChanges();
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadURL2 = fileRef.getDownloadURL()
+        this.downloadURL2.subscribe((url) => {
+          this.student.imageURL2 = url
+          this.student.imageName2 = filePath
+        });
+      })
+    )
+      .subscribe();
+  } //Upload File2
+
+  uploadFile3(event) {
+    const file = event.target.files[0];
+    if (file.type.split('/')[0] !== 'image') {
+      console.error('unsupported file type :( ')
+      return
+    }
+    const filePath = `wat/${new Date().getTime()}_${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+
+    this.uploadPercent3 = task.percentageChanges();
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadURL3 = fileRef.getDownloadURL()
+        this.downloadURL3.subscribe((url) => {
+          this.student.imageURL3 = url
+          this.student.imageName3 = filePath
+        });
+      })
+    )
+      .subscribe();
+  } //Upload File3
+
+  uploadFile4(event) {
+    const file = event.target.files[0];
+    if (file.type.split('/')[0] !== 'image') {
+      console.error('unsupported file type :( ')
+      return
+    }
+    const filePath = `wat/${new Date().getTime()}_${file.name}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(filePath, file);
+
+
+    this.uploadPercent4 = task.percentageChanges();
+
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadURL4 = fileRef.getDownloadURL()
+        this.downloadURL4.subscribe((url) => {
+          this.student.imageURL4 = url
+          this.student.imageName4 = filePath
+        });
+      })
+    )
+      .subscribe();
+  } //Upload File4
+
+
   editWat(item) {
 
     this.student.key = item.key
@@ -260,7 +373,9 @@ export class EditPage {
     this.updateTravelBTN = false;
     this.updateSportBTN = false;
 
-    console.log(item.key)
+    this.content.scrollToTop();
+  
+    console.log("key: " + item.key + "Image: " + this.student.imageURL)
 
   }
 
@@ -295,6 +410,7 @@ export class EditPage {
     this.updateTravelBTN = false;
     this.updateSportBTN = false;
 
+    this.content.scrollToTop();
     console.log(item.key)
   }
 
@@ -329,6 +445,8 @@ export class EditPage {
     this.updateWatBTN = false;
     this.updateSportBTN = false;
     
+    this.content.scrollToTop();
+  
 
     console.log(item.key)
   } //editTravel
@@ -364,7 +482,8 @@ export class EditPage {
     this.updateWatBTN = false;
     this.updateTravelBTN = false
     
-
+    this.content.scrollToTop();
+  
     console.log(item.key)
   } //editSport
 
@@ -391,8 +510,15 @@ export class EditPage {
  
 
   updateVolunteer(item) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'circles',
+      content: 'Please wait...',
+    });
+    loading.present().then(() => {
     let itemRef = this.db.list('volunteer');
     itemRef.update(this.student.key, this.student);
+    loading.dismiss();
+  }) //loading
 
     this.AddForm = false;
     this.toast("")

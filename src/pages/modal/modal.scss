@@ -1,0 +1,61 @@
+page-modal {
+    .image_outer_container{
+        margin-top: auto;
+        margin-bottom: auto;
+        border-radius: 50%;
+        position: relative;
+    }
+    
+    .image_inner_container{
+        border-radius: 50%;
+        padding: 5px;
+     background: #833ab4; 
+     background: -webkit-linear-gradient(to bottom, #2983fa, #1dbefd, #833ab4); 
+     background: linear-gradient(to bottom, #3361f8, #1dabfd, #833ab4);
+    }
+    .image_inner_container img{
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        border: 5px solid white;
+    }
+    
+    .image_outer_container .green_icon{
+      background-color: #3793d1;
+      position: absolute;
+      right: 30px;
+      bottom: 10px;
+      height: 30px;
+      width: 30px;
+      border:5px solid white;
+      border-radius: 50%;
+    }
+
+
+    .profile-usertitle {
+        text-align: center;
+        margin-top: 20px;
+      }
+      
+      .profile-usertitle-name {
+        color: #5a7391;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 7px;
+      }
+      
+      .profile-usertitle-job {
+        text-transform: uppercase;
+        color: #5b9bd1;
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 15px;
+      }
+      .profile-usertitle-btn{
+     
+
+        text-transform: uppercase;
+        
+      }
+
+}
