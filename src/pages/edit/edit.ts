@@ -208,7 +208,7 @@ export class EditPage {
             console.log('Comfirm delete');
 
             console.log("key" + JSON.stringify(item));
-            let itemRef = this.db.list('travel');
+            let itemRef = this.db.list('sport');
             itemRef.remove(item.key);
             if (this.student.imageName) {
               var desertRef = this.storage.ref(item.payload.val().imageName);
@@ -350,7 +350,7 @@ export class EditPage {
 
     this.student.time = item.payload.val().time;
     this.student.call = item.payload.val().call;
-    this.student.address = item.payload.val().call;
+    this.student.address = item.payload.val().address;
     this.student.desc = item.payload.val().desc;
     this.student.track = item.payload.val().track;
 
@@ -387,7 +387,7 @@ export class EditPage {
 
     this.student.time = item.payload.val().time;
     this.student.call = item.payload.val().call;
-    this.student.address = item.payload.val().call;
+    this.student.address = item.payload.val().address;
     this.student.desc = item.payload.val().desc;
     this.student.track = item.payload.val().track;
 
@@ -422,7 +422,7 @@ export class EditPage {
 
     this.student.time = item.payload.val().time;
     this.student.call = item.payload.val().call;
-    this.student.address = item.payload.val().call;
+    this.student.address = item.payload.val().address;
     this.student.desc = item.payload.val().desc;
     this.student.track = item.payload.val().track;
 
@@ -459,7 +459,7 @@ export class EditPage {
 
     this.student.time = item.payload.val().time;
     this.student.call = item.payload.val().call;
-    this.student.address = item.payload.val().call;
+    this.student.address = item.payload.val().address;
     this.student.desc = item.payload.val().desc;
     this.student.track = item.payload.val().track;
 

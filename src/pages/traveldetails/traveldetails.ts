@@ -48,7 +48,7 @@ export class TraveldetailsPage {
      this.imageURL = this.params.get("imageURL")
      this.imageURL2 = this.params.get("imageURL2")
      this.imageURL3 = this.params.get("imageURL3")
-     this.imageURL4 = this.params.get("imageURL3")
+     this.imageURL4 = this.params.get("imageURL4")
      
      console.log(this.title)
    })

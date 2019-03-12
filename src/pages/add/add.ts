@@ -43,7 +43,7 @@ export class AddPage {
   isUploaded: boolean = false;
   items: Observable<any[]>;
 
-
+  
 
 
 
@@ -307,6 +307,7 @@ class Student {
   address = "";
   desc = "";
   track = "";
+  
   imageName = "";
   imageURL = "";
 

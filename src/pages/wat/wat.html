@@ -15,19 +15,20 @@
 
 <ion-content padding>
 
-
-  <div class="w3-text-white w3-large" *ngFor="let item of itemsWat | async" (click)="goWatdetailsPage(item)">
-      <div>
-        <div class="w3-display-container">
-          <img src="{{item.payload.val().imageURL}}"
-            alt="" style="width:100%" class="w3-round">
-          <div class="w3-display-bottomleft w3-container first w3-padding" style="width:100%;">    
-            <h1 style="margin-bottom: 30px;">{{item.payload.val().title}}</h1>
-            <span class="w3-display-bottomleft w3-padding">{{item.payload.val().name}}</span>
+<div class="test">
+    <div class="w3-text-white w3-large" *ngFor="let item of itemsWat | async" (click)="goWatdetailsPage(item)">
+        <div>
+          <div class="w3-display-container">
+            <img src="{{item.payload.val().imageURL}}"
+              alt="" style="width:100%" class="w3-round">
+            <div class="w3-display-bottomleft w3-container first w3-padding" style="width:100%;">    
+              <h1 style="margin-bottom: 30px;">{{item.payload.val().title}}</h1>
+              <span class="w3-display-bottomleft w3-padding">{{item.payload.val().name}}</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+</div>
 
 
 

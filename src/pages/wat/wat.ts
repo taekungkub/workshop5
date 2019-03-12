@@ -69,13 +69,19 @@ export class WatPage {
     address : item.payload.val().address,
     desc : item.payload.val().desc,
     track : item.payload.val().track,
+
+    key : item.payload.val().key,
+
+    comment:item.payload.val().comment,
+
     imageURL:item.payload.val().imageURL,
     imageURL2 : item.payload.val().imageURL2,
     imageURL3 : item.payload.val().imageURL3,
     imageURL4 : item.payload.val().imageURL4
     }
     this.navCtrl.push("WatdetailsPage",data);
-    console.log("Item Key" + item)
+    console.log("ชื่อสถานที่: "+ item.payload.val().title + " Item Key: " + item.key)
+    console.log("Comment: " + item.payload.val().comment)
 
     this.db.object(`wat/${item.key}/view`).query.ref.transaction((view => {
 

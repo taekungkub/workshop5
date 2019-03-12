@@ -6,4 +6,69 @@ page-travel {
     div.first {
         background: rgba(0, 0, 0, 0.4);
     }
+
+    
+    @media (max-width: 575.98px) { 
+        .test{
+          width: 100%;
+          display: block;
+          margin-left: auto;
+          margin-right: auto ;
+          align-items: center;
+          h3{
+            font-size: 17px;
+          }
+       
+        }
+       }
+
+      // Small devices (landscape phones, 576px and up)
+      @media (max-width: 767.98px) { 
+        .test{
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto ;
+        align-items: center;
+        h3{
+          font-size: 18px;
+        }
+      } }
+      
+      // Medium devices (tablets, 768px and up) ipad
+      @media (min-width: 768px) and (max-width: 991.98px) { 
+        .test{
+        width: 80%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto ;
+        align-items: center;
+        h3{
+          font-size: 25px;
+        }
+      } }
+      
+      // Large devices (desktops, 992px and up)
+      @media (min-width: 992px) and (max-width: 1199.98px) { 
+        .test{
+        width: 70%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto ;
+        align-items: center;
+        h3{
+          font-size: 25px;
+        }
+      }}
+      
+      // Extra large devices (large desktops, 1200px and up)
+      @media (min-width: 1200px) { 
+        .test{
+        width: 50%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto ;
+        align-items: center;
+    
+      } }
 }

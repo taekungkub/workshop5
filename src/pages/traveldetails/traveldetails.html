@@ -14,18 +14,18 @@
     <img src="{{imageURL}}" alt="">
   </ion-slide>
   <ion-slide>
-      <img src="assets/imgs/logo_menu.png" alt="">
+      <img src="{{imageURL2}}" alt="">
   </ion-slide>
   <ion-slide>
-      <img src="assets/imgs/logo_menu.png" alt="">
+      <img src="{{imageURL3}}" alt="">
   </ion-slide>
   <ion-slide>
-      <img src="assets/imgs/logo_menu.png" alt="">
+      <img src="{{imageURL4}}" alt="">
   </ion-slide>
 </ion-slides>
 
 
-
+ <div class="test">
 <ion-list>
   <ion-item>
     <h1>{{title}}</h1>
@@ -33,18 +33,18 @@
 
   <ion-item>
     <ion-icon name="md-time" item-start color="travel"></ion-icon>
-    10:00 น. - 17:00 น. 
+    {{time}}
   </ion-item>
 
 
   <ion-item>
     <ion-icon name="md-call" item-start color="travel"></ion-icon>
-    โทร. 02-5778666
+    {{call}}
   </ion-item>
 
   <ion-item>
     <ion-icon name="md-map" item-start color="travel"></ion-icon>
-    บริษัท อะมิวส์เม้นท์ครีเอชั่น จำกัด 62 หมู่ 1 ถ.รังสิต - องครักษ์ กม.7 บึงยี่โถ อ.ธัญบุรี ปทุมธานี 12130
+    {{address}}
   </ion-item>
 </ion-list>
 
@@ -59,7 +59,7 @@
     <input id="checkcontact" type="checkbox">
     <form action="" method="post" class="contactform">
       <h2 class="w3-justify w3-padding">
-        ป็นสวนสนุกและสถานที่พักผ่อนที่รวบรวมความบันเทิงนานาชนิดเข้าไว้ด้วยกันมีเนื้อที่ทั้งสิ้นประมาณ160ไร่ตั้งอยู่ที่กม.7รังสิตนครนายก(คลอง3) "ดรีมเวิลด์" เกิดขึ้นจากความคิดริเริ่มของ“ตระกูลกิติพราภรณ์” ซึ่งในขณะนั้นได้ดำเนินธุรกิจเกี่ยวกับสวนสนุกคือสวนสนุกแดนเนรมิต ที่มาของโครงการ จากประสบการณ์อันยาวนานในการบริหารงาน“สวนสนุกแดนเนรมิต” ทำให้ผู้บริหารมองว่า ในปัจจุบันโดยเฉพาะในกรุงเทพฯมีสวนสนุกประเภทนี้เพียง3แห่งเท่านั้นคือแดนเนรมิต,สวนสยามและซาฟารีเวิลด์ ซึ่งยังไม่เพียงพอสำหรับความต้องการของคนกรุงเทพฯซึ่งเพิ่มขึ้นอย่างรวดเร็ว ด้วยเหตุนี้ผู้บริหารจึงมีโครงการที่จะเปิดสวนสนุกแห่งใหม่ขึ้นเพื่อให้เป็นสถานที่พักผ่อนหย่อนใจและเป็นปอดแห่งใหม่ของคนกรุงเทพฯรวมถึงเป็นแหล่งดึงดูดนักท่องเที่ยวชาวต่างชาติด้วย
+        {{desc}}
       </h2>
     </form>
   </article>
@@ -70,11 +70,11 @@
 
 <!--Footer-->
 <div class="w3-padding" style="margin-bottom: 5%;">
-  <a ion-button full icon-only  color="dark"  href="https://www.google.co.th/maps/place/วัดเขียนเขต+พระอารามหลวง/@13.99931,100.676364,18z/data=!4m8!1m2!2m1!1z4Lin4Lix4LiU4LmA4LiC4Li14Lii4LiZ4LmA4LiC4LiV!3m4!1s0x0:0xbb320e0304bcbbb5!8m2!3d13.9983072!4d100.6766875">แผนที่
+  <a ion-button full icon-only  color="dark"  href="{{track}}">แผนที่
     <ion-icon name="md-map" large color="white"></ion-icon>
   </a>
 </div>
 
-
+</div>
 
 </ion-content>

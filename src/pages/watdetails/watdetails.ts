@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 
-/**
- * Generated class for the WatdetailsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { AngularFireDatabaseModule , AngularFireDatabase  } from 'angularfire2/database';
+import { AngularFireStorage, AngularFireUploadTask } from 'angularfire2/storage';
+import { AngularFirestore } from 'angularfire2/firestore';
+
+import 'rxjs/add/operator/map';
+
+import { Observable } from 'rxjs';
+
+import { map } from 'rxjs/operators';
+
 
 @IonicPage()
 @Component({
@@ -22,13 +26,25 @@ export class WatdetailsPage {
   desc:string;
   address:string;
   track:string;
+  key:string;
+
+  commentText:string;
+
   imageURL:string;
   imageURL2:string;
   imageURL3:string;
   imageURL4:string;
+
+  itemsWat: Observable<any[]>;
   
-  constructor(public navCtrl: NavController, public params: NavParams, public loadingCtrl: LoadingController) {
-     // this.items = db.list('/wat').valueChanges();
+  constructor(public navCtrl: NavController, public params: NavParams, public loadingCtrl: LoadingController,
+    private db: AngularFireDatabase, private storage: AngularFireStorage) {
+     
+      this.itemsWat = db.list(`/wat/`)
+      .valueChanges()
+
+      console.log(this.itemsWat)
+
    let loading = this.loadingCtrl.create({
     spinner: 'circles',
     content: 'Please wait...'
@@ -43,19 +59,39 @@ export class WatdetailsPage {
      this.desc = this.params.get("desc")
      this.track = this.params.get("track")
 
+     this.key = this.params.get("key")
+
+     this.commentText = this.params.get("comment")
+
      this.imageURL = this.params.get("imageURL")
      this.imageURL2 = this.params.get("imageURL2")
      this.imageURL3 = this.params.get("imageURL3")
      this.imageURL4 = this.params.get("imageURL4")
-     
-     console.log(this.title)
+     console.log("Key: "+ this.key)
+ 
    })
    loading.dismiss();
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad WatdetailsPage');
-    console.log(this.title)
+  
+  
   }
 
+  Student: any;
+  student: Student = new Student();
+
+  comment(){
+
+    let itemRef = this.db.list(`wat/${this.key}/comment`);
+    itemRef.push(this.student);
+    console.log(this.student)
+    //reset
+    this.student.comment = ""
+  }
+
+}
+
+class Student {
+  comment = "";
 }
