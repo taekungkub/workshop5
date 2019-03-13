@@ -28,6 +28,7 @@ export class MyApp {
       { title: 'แก้ไข',icon: 'construct', component: "EditPage" },
       { title: 'เกี่ยวกับเทศบาล',icon: 'document', component: "AboutPage" },
       { title: 'ติดต่อ',icon: 'md-contact', component: "ContactPage" },
+      { title: 'ข้อเสนอแนะ',icon: 'md-help', component: "SuggestionPage" },
     ];
 
   }
