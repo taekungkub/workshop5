@@ -30,6 +30,7 @@ export class MemberPage {
 
   itemsAdmin: Observable<any[]>;
   displayName:string;
+  emailAdmin:string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
     , private alertCtrl: AlertController, public loadingCtrl: LoadingController, private toastCtrl: ToastController
@@ -41,7 +42,8 @@ export class MemberPage {
     this.itemsAdmin = db.list('/admin')
       .snapshotChanges()
 
-    this.email = fire.auth.currentUser.email;
+    this.emailAdmin = fire.auth.currentUser.email;
+
     this.photoURL = fire.auth.currentUser.photoURL;
     this.displayName = fire.auth.currentUser.displayName;
   } //constructor
