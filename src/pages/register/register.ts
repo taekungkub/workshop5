@@ -38,6 +38,7 @@ export class RegisterPage {
   fullname: string
   email: string
   password: string;
+  CFpassword:string;
 
 
 
@@ -57,9 +58,14 @@ export class RegisterPage {
       this.alert("กรุณากรอกอีเมลล์")
     } else if (this.password == null) {
       this.alert("กรุณากรอกรหัสผ่าน")
+    } else if(this.password !== this.CFpassword) {
+      this.alert("กรุณากรอกรหัสผ่านให้ตรงกัน")
     } else {
 
       this.signUp();
+
+    
+
     }
 
 
@@ -78,6 +84,7 @@ export class RegisterPage {
           fullname: this.fullname,
           email: this.email,
           password: this.password,
+          CFpassword: this.CFpassword,
           photoURL:"https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55",
           status: "member",
         })
@@ -85,6 +92,12 @@ export class RegisterPage {
         console.log("Insert Success")
         this.updataMember();
         this.alert("Success! You're registration")
+
+        //reset
+        this.fullname = "";
+        this.email = "";
+        this.password = "";
+        this.CFpassword ="";
       })
       loading.dismiss();
 
@@ -101,9 +114,7 @@ export class RegisterPage {
     });
 
 
-    this.fullname = "";
-    this.email = "";
-    this.password = "";
+ 
   } //signUp
 
   updataMember() {

@@ -37,6 +37,12 @@
            <label for="password">รหัสผ่าน</label>
            <input name="password" type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password">
          </div>
+
+          <!--CFpassword-->
+          <div class="form-group">
+            <label for="CFpassword">รหัสผ่าน</label>
+            <input name="CFpassword" type="password" class="form-control" id="CFpassword" placeholder="Confirm Password" [(ngModel)]="CFpassword">
+          </div>
        
           <button ion-button color="sport" (click)="registerAdmin()">ยืนยัน</button>
           <button ion-button color="sport" (click)="hide()">ยกเลิก</button>

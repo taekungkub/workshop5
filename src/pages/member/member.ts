@@ -65,34 +65,67 @@ export class MemberPage {
   }
 
   member(item) {
-    var user = firebase.auth().currentUser;
+    this.email = item.payload.val().email;
+    this.password = item.payload.val().password;
+
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(data => {
+     var user = firebase.auth().currentUser;
     user.updateProfile({
       displayName: "member",
       photoURL: "https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55"
     }).then(function () {
+      console.log("this member: " + user.displayName)
       // Update successful.
     }).catch(function (error) {
       // An error happened.
-    });
+    }); 
+    })
+
+    
     let itemRef = this.db.list('user');
     itemRef.update(item.key, { "status": "member" });
-    console.log("Status " + user.displayName)
+    console.log("Status " + this.displayName)
     this.alert("เปลี่ยนสถานะเรียบร้อยแล้ว")
   }//member
 
   admin(item) {
-    var user = firebase.auth().currentUser;
+    this.email = item.payload.val().email;
+    this.password = item.payload.val().password;
+
+    firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(data => {
+     var user = firebase.auth().currentUser;
     user.updateProfile({
       displayName: "admin",
       photoURL: "https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55"
     }).then(function () {
+      console.log("this admin: " + user.displayName)
       // Update successful.
     }).catch(function (error) {
       // An error happened.
-    });
-    let itemRef = this.db.list('user');
-    itemRef.update(item.key, { "status": "admin", "photoURL": "https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55" });
-    console.log("Status " + user.displayName)
+    }); 
+    })
+
+    //update realtime admin
+    this.fullname = item.payload.val().fullname;
+    this.email = item.payload.val().email;
+    this.password = item.payload.val().password;
+    this.CFpassword = item.payload.val().CFpassword;
+
+    let itemRef = this.db.list('admin');
+    itemRef.update(item.key,{
+      fullname:this.fullname,
+      email:this.email,
+      password:this.password,
+      CFpassword:this.CFpassword,
+      photoURL:"https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55",
+      status:"admin"
+    })
+    
+    let itemRef2 = this.db.list('user');
+    itemRef2.remove(item.key);
+
+
+    console.log("Status " + this.displayName)
     this.alert("เปลี่ยนสถานะเรียบร้อยแล้ว")
   } //admin
 
@@ -101,6 +134,7 @@ export class MemberPage {
   fullname: string
   email: string
   password: string;
+  CFpassword:string;
   photoURL: string
   status:string
 
@@ -111,6 +145,8 @@ export class MemberPage {
       this.alert("กรุณากรอกอีเมลล์")
     } else if (this.password == null) {
       this.alert("กรุณากรอกรหัสผ่าน")
+    }else if(this.password !== this.CFpassword) {
+      this.alert("กรุณากรอกรหัสผ่านให้ตรงกัน")
     } else {
 
       this.signUpAdmin();
@@ -130,6 +166,7 @@ export class MemberPage {
           fullname: this.fullname,
           email: this.email,
           password: this.password,
+          CFpassword: this.CFpassword,
           photoURL: "https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55",
           status: "admin",
         })
@@ -142,6 +179,8 @@ export class MemberPage {
         this.fullname = "";
         this.email = "";
         this.password = "";
+        this.CFpassword = "";
+
       })
       loading.dismiss();
 
@@ -166,7 +205,7 @@ export class MemberPage {
       displayName: "admin",
       photoURL: "https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55"
     }).then(function () {
-      console.log("this admin: " + user.displayName, user.photoURL)
+      console.log("this admin: " + user.displayName)
       // Update successful.
     }).catch(function (error) {
       // An error happened.
@@ -219,12 +258,14 @@ export class MemberPage {
     this.fullname = item.payload.val().fullname;
     this.email = item.payload.val().email;
     this.password = item.payload.val().password;
+    this.CFpassword = item.payload.val().CFpassword;
 
     let itemRef = this.db.list('user');
     itemRef.update(item.key,{
       fullname:this.fullname,
       email:this.email,
       password:this.password,
+      CFpassword:this.CFpassword,
       photoURL:"https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55",
       status:"member"
     }).then(()=>{
@@ -238,9 +279,6 @@ export class MemberPage {
         // An error happened.
       });
     })
-    
-   
-
     this.toast2("")
 
   } //updateWat
@@ -284,6 +322,10 @@ export class MemberPage {
     console.log(this.fullname + this.email + this. photoURL + this.status)
     
     modal.present();
+  }
+
+  switch(){
+    
   }
 
 }

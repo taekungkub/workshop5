@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar color="title2">
     <ion-title>สมัครสมาชิก</ion-title>
   </ion-navbar>
 
@@ -25,7 +25,7 @@
      
        <!--email-->
        <div class="form-group">
-         <label for="email">อีเมลล์</label>
+         <label for="email">อีเมล์</label>
          <input name="email" type="email" class="form-control" id="email" placeholder="Email address" [(ngModel)]="email">
        </div>
      
@@ -33,6 +33,11 @@
        <div class="form-group">
          <label for="password">รหัสผ่าน</label>
          <input name="password" type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="password">
+       </div>
+
+       <div class="form-group">
+         <label for="password">ยืนยันรหัสผ่าน</label>
+         <input name="password" type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="CFpassword">
        </div>
      
         <button ion-button (click)="register()">ยืนยัน</button>
