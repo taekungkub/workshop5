@@ -16,17 +16,13 @@
 <ion-content padding>
   <div class="container">
       <ion-item-group>
-          <ion-list *ngFor="let item of itemSuggestion | async">
-              <ion-item>
+          <ion-list>
+              <ion-item  *ngFor="let item of itemSuggestion | async" (click)="presentSuggestionModal(item)" >
                   <h1>เรื่อง: {{item.payload.val().title}} </h1>
                   <p>ผู้ส่ง:  {{item.payload.val().name}}</p>
-                  <p item-end>{{item.payload.val().timestamp | date}}</p>
-
-                  <button ion-button outline item-end (click)="presentSuggestionModal(item)" color="primary">ดูรายละเอียด</button>
+                  <p>{{item.payload.val().timestamp | date}}</p>
               </ion-item>
-              
         </ion-list>
-
         </ion-item-group>
   </div>
 
