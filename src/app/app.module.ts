@@ -17,7 +17,6 @@ import { AngularFireStorageModule } from 'angularfire2/storage';
 import * as Firebase from 'Firebase';
 
 
-
 var config = {
   apiKey: "AIzaSyAJTU6tNy7n4we9lSKYTmn15M7Ll90YXIU",
   authDomain: "login-a4abb.firebaseapp.com",

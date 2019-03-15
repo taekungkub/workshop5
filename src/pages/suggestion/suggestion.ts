@@ -58,6 +58,9 @@ export class SuggestionPage {
       else if (this.student.desc == "") {
       alert.present();
       }
+      else if (this.student.title == "") {
+        alert.present();
+        }
       else {
       let itemRef = this.db.list(`suggestion`);
       itemRef.push(this.student);
@@ -79,6 +82,7 @@ export class SuggestionPage {
       this.student.name=""
       this.student.email=""
       this.student.tel=""
+      this.student.title=""
       this.student.desc=""
 
     } //sendData
@@ -88,6 +92,9 @@ class Student {
   name=""
   email=""
   tel=""
+  title=""
   desc=""
+
+  timestamp = Date.now();
 
 }

@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
   
-    <ion-title>ข้อเสนอแนะ</ion-title>
+    <ion-title>ปัญหาและข้อเสนอแนะ</ion-title>
  
   </ion-navbar>
 
@@ -30,6 +30,12 @@
           <label for="tel">เบอร์โทรศัพท์</label>
           <input type="text" class="form-control" id="tel" name="tel" [(ngModel)]="student.tel">
         </div>
+
+        <div class="form-group">
+          <label for="title">เรื่อง</label>
+          <textarea name="title" type="text"  class="form-control" id="title" name="title"  placeholder="" [(ngModel)]="student.title"></textarea>
+      </div>
+
 
         <div class="form-group">
           <label for="desc">ปัญหา หรือ ข้อเสนอแนะ</label>

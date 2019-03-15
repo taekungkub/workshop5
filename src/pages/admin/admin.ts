@@ -66,6 +66,11 @@ export class AdminPage {
  
   }
 
+  ViewSuggestion(){
+    this.navCtrl.push("ViewSuggestionPage")
+
+  }
+
   
 
 }

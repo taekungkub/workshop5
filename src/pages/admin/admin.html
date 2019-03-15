@@ -9,7 +9,7 @@
 
 <ion-content padding>
 
-  <div>
+  <div class="container">
     <div class="container">
       <div class="d-flex justify-content-center h-100 w3-margin">
         <div class="image_outer_container">
@@ -41,7 +41,7 @@
       <ion-item-divider color="wat">จัดการ</ion-item-divider>
       <ion-list>
           <button ion-item (click)="goHomePage()">
-              หน้าแรก
+            หน้าแรก
           </button>
 
         <button ion-item (click)="goAddPage()">
@@ -49,6 +49,10 @@
         </button>
         <button ion-item (click)="goEditPage()">
           แก้ไขสถานที่
+        </button>
+
+        <button ion-item (click)="ViewSuggestion()">
+          ปัญหาและข้อเสนอแนะ
         </button>
 
       </ion-list>

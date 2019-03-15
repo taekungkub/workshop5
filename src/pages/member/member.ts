@@ -324,8 +324,5 @@ export class MemberPage {
     modal.present();
   }
 
-  switch(){
-    
-  }
 
 }

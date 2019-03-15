@@ -11,12 +11,6 @@ import { ToastController } from 'ionic-angular';
 import * as firebase from "firebase";
 import { LoginPage } from '../login/login';
 
-/**
- * Generated class for the RegisterPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -61,14 +55,8 @@ export class RegisterPage {
     } else if(this.password !== this.CFpassword) {
       this.alert("กรุณากรอกรหัสผ่านให้ตรงกัน")
     } else {
-
       this.signUp();
-
-    
-
     }
-
-
   }
 
   signUp() {
@@ -130,6 +118,14 @@ export class RegisterPage {
     });
   }
 
+cancel(){
+  //reset
+  this.fullname = "";
+  this.email = "";
+  this.password = "";
+  this.CFpassword ="";
+  this.navCtrl.setRoot("LoginPage")
 
+}
 
 }

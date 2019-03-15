@@ -15,12 +15,7 @@ import { ToastController } from 'ionic-angular';
 import { t } from '@angular/core/src/render3';
 
 
-/**
- * Generated class for the EditPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
 
 @IonicPage()
 @Component({
@@ -44,6 +39,15 @@ export class EditPage {
   updateVolunteerBTN = false
   updateTravelBTN = false
   updateSportBTN = false
+
+  characters = [
+    'Finn the human',
+    'Jake the dog',
+    'Princess bubblegum',
+    'Lumpy Space Princess',
+    'Beemo1',
+    'Beemo2'
+  ]
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase,
