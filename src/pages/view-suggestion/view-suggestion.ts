@@ -22,11 +22,15 @@ export class ViewSuggestionPage {
 
   itemSuggestion: Observable<any[]>;
 
+  read=false
+ 
+
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               private db: AngularFireDatabase,
               private fire: AngularFireAuth,
               public modalController: ModalController) {
+            
 
                 this.itemSuggestion = db.list('/suggestion', ref => ref.orderByChild('timestamp'))
               .snapshotChanges()
@@ -48,7 +52,17 @@ export class ViewSuggestionPage {
     const modal = this.modalController.create('ViewSuggestionModalPage',data)
     console.log("รายละเอียด: "+ name)
 
+    let read = "อ่านแล้ว";
+    let itemRef = this.db.list('suggestion');
+    itemRef.update(item.key,{read});
+    console.log("key: " + item.key)
+
+ 
     modal.present();
   }
+
+
+ 
+    
 
 }

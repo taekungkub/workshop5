@@ -21,6 +21,8 @@
                   <h1>เรื่อง: {{item.payload.val().title}} </h1>
                   <p>ผู้ส่ง:  {{item.payload.val().name}}</p>
                   <p>{{item.payload.val().timestamp | date}}</p>
+
+                  <p item-end >{{item.payload.val().read}}</p>
               </ion-item>
         </ion-list>
         </ion-item-group>

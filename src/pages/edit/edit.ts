@@ -540,6 +540,7 @@ export class EditPage {
   } //updateTravel
 
   updateSport(item) {
+  
     let itemRef = this.db.list('sport');
     itemRef.update(this.student.key, this.student);
 

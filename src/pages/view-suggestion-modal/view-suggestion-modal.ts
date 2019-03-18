@@ -18,6 +18,7 @@ export class ViewSuggestionModalPage {
   desc:string
   timestamp:string
 
+  
   constructor(public navCtrl: NavController, public navParams: NavParams,private view:ViewController) {
 
     this.name = this.navParams.get("name")
@@ -27,6 +28,7 @@ export class ViewSuggestionModalPage {
     this.title = this.navParams.get("title")
     this.desc = this.navParams.get("desc")
     this.timestamp = this.navParams.get("timestamp")
+   
   } //constructor
 
   ionViewDidLoad() {
