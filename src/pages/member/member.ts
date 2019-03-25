@@ -241,6 +241,7 @@ export class MemberPage {
 
             //เปลี่ยนเป็นสมาชิก
             this.updateMember(item);
+            this.member(item);
             //delete in database real time
             let itemRef = this.db.list('admin');
             itemRef.remove(item.key);
@@ -279,6 +280,7 @@ export class MemberPage {
         // An error happened.
       });
     })
+    
     this.toast2("")
 
   } //updateWat
