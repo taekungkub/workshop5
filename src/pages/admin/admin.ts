@@ -18,6 +18,8 @@ export class AdminPage {
   photoURL:string;
   displayName:string;
 
+  tabsHideOnSubPages: true
+  
   constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth
             , private alertCtrl: AlertController, public loadingCtrl: LoadingController) {
     this.email = fire.auth.currentUser.email;
@@ -69,6 +71,10 @@ export class AdminPage {
   ViewSuggestion(){
     this.navCtrl.push("ViewSuggestionPage")
 
+  }
+
+  manageUser(){
+    this.navCtrl.push("ManageTabsPage")
   }
 
   

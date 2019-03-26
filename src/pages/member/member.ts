@@ -92,6 +92,21 @@ export class MemberPage {
     this.email = item.payload.val().email;
     this.password = item.payload.val().password;
 
+    let alert = this.alertCtrl.create({
+      title: 'ยืนยันการเปลี่ยนสิทธิ์',
+      message: 'คุณต้องการที่จะเปลี่ยนสิทธิ์หรือไม่ ?',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'ยกเลิก',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'ยืนยัน',
+          handler: () => {
+
     firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(data => {
      var user = firebase.auth().currentUser;
     user.updateProfile({
@@ -127,6 +142,11 @@ export class MemberPage {
 
     console.log("Status " + this.displayName)
     this.alert("เปลี่ยนสถานะเรียบร้อยแล้ว")
+  }
+}
+]
+});
+alert.present();
   } //admin
 
 
@@ -299,6 +319,11 @@ export class MemberPage {
 
   AddForm = false;
   addAdmin(){
+    //reset
+    this.fullname =""
+    this.email = ""
+    this.password = ""
+    this.CFpassword = ""
   
     let loading = this.loadingCtrl.create({
       spinner: 'circles',
