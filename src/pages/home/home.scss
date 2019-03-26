@@ -26,6 +26,8 @@ page-home {
       }
 
 
+
+
       @media (max-width: 575.98px) { 
         .test{
           width: 100%;
@@ -87,7 +89,114 @@ page-home {
         margin-left: auto;
         margin-right: auto ;
         align-items: center;
-    
-      } }
+        h3{
+          font-size: 60px;
+        }
+        ion-icon{
+          font-size: 40px;
+        }
+      }}
+
+
+      //I phone SE
+      @media (min-width: 320px) and (max-width: 568px) { 
+        .test{
+        width: 100%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto ;
+        align-items: center;
+        h3{
+          font-size: 20px;
+        }
+        ion-icon{
+          font-size: 20px;
+        }
+      }}
+
+      
+
+      //Iphone6/7/8
+ @media (min-width: 375px) and (max-width: 667px) { 
+  .test{
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
+  align-items: center;
+  h3{
+    font-size: 23px;
+  }
+  ion-icon{
+    font-size: 19px;
+  }
+}}
+
+ //Iphone6/7/8 plus
+ @media (min-width: 414px) and (max-width: 736px) { 
+  .test{
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
+  align-items: center;
+  h3{
+    font-size: 25px;
+  }
+  ion-icon{
+    font-size: 22px;
+  }
+}}
+
+
+ //Pixel 2 XL
+ @media (min-width: 411px) and (max-width: 723px) { 
+  .test{
+  width: 100%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
+  align-items: center;
+  h3{
+    font-size: 26px;
+  }
+  ion-icon{
+    font-size: 23px;
+  }
+}}
+
+
+ //Ipad
+ @media (min-width: 768px) and (max-width: 1024px) { 
+  .test{
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
+  align-items: center;
+  h3{
+    font-size: 36px;
+  }
+  ion-icon{
+    font-size: 34px;
+  }
+}}
+
+ //Ipad pro
+ @media (min-width: 1024px) and (max-width: 1366px) { 
+  .test{
+  width: 70%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto ;
+  align-items: center;
+  h3{
+    font-size: 45px;
+  }
+  ion-icon{
+    font-size: 37px;
+  }
+}}
+
 
 }

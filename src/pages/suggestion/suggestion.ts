@@ -32,17 +32,17 @@ export class SuggestionPage {
 
     showAlert() {
       const alert = this.alertCtrl.create({
-        title: '',
-        subTitle: 'ข้อความของท่านถูกส่งแล้ว!',
-        buttons: ['ตกลง']
+        title: 'ข้อความของท่านถูกส่งแล้ว!',
+        subTitle: '',
+        buttons: ['ตกลง'],
       });
       alert.present();
     }
 
     sendData(){
       let alert = this.alertCtrl.create({
-        title: '',
-        subTitle: 'กรุณากรอกชื่อ/อีเมลล์/เบอร์โทรศัพท หรือ ข้อเสนอแนะ',
+        title: 'กรุณากรอกชื่อ/อีเมลล์/เบอร์โทรศัพท หรือ ข้อเสนอแนะ',
+        subTitle: '',
         buttons: ['ตกลง']
       });
     

@@ -65,15 +65,15 @@ export class AddPage {
     if (this.student.type == "wat") {
        if(this.student.title == "" && this.student.name == ""){
         let alert = this.alertCtrl.create({
-          title: '',
-          subTitle: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+          title: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+          subTitle: '',
           buttons: ['Dismiss']
         });
         alert.present();
       } else {
         let alert = this.alertCtrl.create({
-          title: '',
-          subTitle: 'เพิ่มข้อมูลสำเร็จแล้ว',
+          title: 'เพิ่มข้อมูลสำเร็จแล้ว',
+          subTitle: '',
           buttons: ['OK']
         });
         alert.present();
@@ -85,15 +85,15 @@ export class AddPage {
     } else if (this.student.type == "volunteer") {
       if(this.student.title == "" && this.student.name == ""){
         let alert = this.alertCtrl.create({
-          title: '',
-          subTitle: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+          title: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+          subTitle: '',
           buttons: ['Dismiss']
         });
         alert.present();
       } else { 
         let alert = this.alertCtrl.create({
-          title: '',
-          subTitle: 'เพิ่มข้อมูลสำเร็จแล้ว',
+          title: 'เพิ่มข้อมูลสำเร็จแล้ว',
+          subTitle: '',
           buttons: ['OK']
         });
         alert.present();
@@ -104,15 +104,15 @@ export class AddPage {
       } else if (this.student.type == "travel") {
         if(this.student.title == "" && this.student.name == ""){
           let alert = this.alertCtrl.create({
-            title: '',
-            subTitle: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+            title: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+            subTitle: '',
             buttons: ['Dismiss']
           });
           alert.present();
         } else { 
           let alert = this.alertCtrl.create({
-            title: '',
-            subTitle: 'เพิ่มข้อมูลสำเร็จแล้ว',
+            title: 'เพิ่มข้อมูลสำเร็จแล้ว',
+            subTitle: '',
             buttons: ['OK']
           });
           alert.present();
@@ -125,15 +125,15 @@ export class AddPage {
         else if (this.student.type == "sport") {
           if(this.student.title == "" && this.student.name == ""){
             let alert = this.alertCtrl.create({
-              title: '',
-              subTitle: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+              title: 'กรุณากรอกชื่อสถานที่และเขต/อำเภอ',
+              subTitle: '',
               buttons: ['Dismiss']
             });
             alert.present();
           } else { 
             let alert = this.alertCtrl.create({
-              title: '',
-              subTitle: 'เพิ่มข้อมูลสำเร็จแล้ว',
+              title: 'เพิ่มข้อมูลสำเร็จแล้ว',
+              subTitle: '',
               buttons: ['OK']
             });
             alert.present();
@@ -146,8 +146,8 @@ export class AddPage {
 
       else if (this.student.type == "Default") {
         let alert = this.alertCtrl.create({
-          title: '',
-          subTitle: 'กรุณาเลือกประเภท',
+          title: 'กรุณาเลือกประเภท',
+          subTitle: '',
           buttons: ['Dismiss']
         });
         alert.present();

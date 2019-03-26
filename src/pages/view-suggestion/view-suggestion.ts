@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 
+import { AlertController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
@@ -29,7 +31,10 @@ export class ViewSuggestionPage {
               public navParams: NavParams,
               private db: AngularFireDatabase,
               private fire: AngularFireAuth,
-              public modalController: ModalController) {
+              public modalController: ModalController,
+              private alertCtrl: AlertController,
+              private toastCtrl: ToastController
+    ,) {
             
 
                 this.itemSuggestion = db.list('/suggestion', ref => ref.orderByChild('timestamp'))
@@ -40,6 +45,43 @@ export class ViewSuggestionPage {
     console.log('ionViewDidLoad ViewSuggestionPage');
   }
 
+  toast2(message: string,item) {
+    this.toastCtrl.create({
+      message: 'คุณได้ทำการลบ ' + item.payload.val().title + ' สำเร็จแล้ว',
+      duration: 3000,
+      position: 'bottom'
+    }).present();
+  }
+
+  onClickDelete(item) {
+    let alert = this.alertCtrl.create({
+      title: 'ยืนยันการลบ',
+      message: 'คุณต้องการจะลบหรือไม่',
+      buttons: [
+        {
+          text: 'ยกเลิก',
+          role: 'ยกเลิก',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'ยืนยัน',
+          handler: () => {
+            console.log('Comfirm delete');
+
+            console.log("key" + JSON.stringify(item));
+            let itemRef = this.db.list('suggestion');
+            itemRef.remove(item.key);
+            this.toast2("",item);
+           
+          }
+        }
+      ]
+    });
+    alert.present();
+  }//onClickDelete
+
   presentSuggestionModal(item) {
     let data = {
       name : item.payload.val().name,
@@ -47,6 +89,7 @@ export class ViewSuggestionPage {
       tel : item.payload.val().tel,
       title : item.payload.val().title,
       desc : item.payload.val().desc,
+    
       timestamp : item.payload.val().timestamp,
       }
     const modal = this.modalController.create('ViewSuggestionModalPage',data)

@@ -79,8 +79,8 @@ export class LoginPage {
 
   alert(message: string) {
     this.alertCtrl.create({
-      title: '',
-      subTitle: message,
+      title: message,
+      subTitle: "",
       buttons: ['OK']
     }).present();
 
@@ -121,7 +121,7 @@ export class LoginPage {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // User is signed in.
-        if(this.email == "admin@hotmail.com" && this.password=="123456"){
+        if(this.email == "admin@hotmail.com" && this.password=="67898704"){
           this.navCtrl.setRoot("MemberPage")
         }
         else if (user.displayName == "member") {

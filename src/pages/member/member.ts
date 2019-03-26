@@ -57,8 +57,8 @@ export class MemberPage {
 
   alert(message: string) {
     this.alertCtrl.create({
-      title: '',
-      subTitle: message,
+      title: message,
+      subTitle: '',
       buttons: ['OK']
     }).present();
 

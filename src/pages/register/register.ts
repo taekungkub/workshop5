@@ -38,8 +38,8 @@ export class RegisterPage {
 
   alert(message: string) {
     this.alertCtrl.create({
-      title: '',
-      subTitle: message,
+      title: message,
+      subTitle: "",
       buttons: ['OK']
     }).present();
 
