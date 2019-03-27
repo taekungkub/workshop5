@@ -115,9 +115,16 @@ $colors: (
   src: url('../assets/fonts/FC Lamoon/FC Lamoon Bold Italic ver 1.00.ttf');
 }
 
+@font-face {
+  font-family: 'FClamoon3';
+  font-style: normal;
+  font-weight: 400;
+  src: url('../assets/fonts/FC Lamoon/FC Lamoon Regular ver 1.00.ttf');
+}
 
 
-h1,h2,{
+
+h1{
   font-family: "FClamoon" !important;
   }
 
@@ -126,7 +133,10 @@ h1,h2,{
     }
 
 
-
+    h2{
+      font-family: "FClamoon3" !important;
+      }
+  
    
     
 
