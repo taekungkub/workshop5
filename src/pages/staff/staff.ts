@@ -9,36 +9,29 @@ import * as firebase from "firebase";
 
 @IonicPage()
 @Component({
-  selector: 'page-admin',
-  templateUrl: 'admin.html',
+  selector: 'page-staff',
+  templateUrl: 'staff.html',
 })
-export class AdminPage {
-
+export class StaffPage {
   email:string;
   photoURL:string;
   displayName:string;
 
 
   
-  constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth
-            , private alertCtrl: AlertController, public loadingCtrl: LoadingController) {
-              let loading = this.loadingCtrl.create({
-                spinner: 'circles',
-                content: 'Please wait...',
-              });
-              loading.present().then(() => {
-             
-            
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private fire: AngularFireAuth ,
+              private alertCtrl: AlertController, 
+              public loadingCtrl: LoadingController) {
+
     this.email = fire.auth.currentUser.email;
     this.photoURL = fire.auth.currentUser.photoURL;
     this.displayName = fire.auth.currentUser.displayName;
-
-    loading.dismiss();
-  }) //loadin
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AdminPage');
+    console.log('ionViewDidLoad StaffPage');
   }
 
   alert(message: string) {
@@ -83,10 +76,5 @@ export class AdminPage {
 
   }
 
-  manageUser(){
-    this.navCtrl.push("ManageUserPage")
-  }
-
-  
 
 }

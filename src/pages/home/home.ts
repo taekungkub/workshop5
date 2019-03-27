@@ -30,6 +30,7 @@ export class Home {
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
     , private storage: AngularFireStorage, public loadingCtrl: LoadingController) {
+     
 
       let loading = this.loadingCtrl.create({
         spinner: 'circles',
@@ -61,7 +62,22 @@ export class Home {
         loading.dismiss();
       }) //loading
 
+
     } //constructor
+
+
+    ionviewDidload(){
+      window.location.reload();
+    }
+
+    doRefresh(refresher) {
+      console.log('Begin async operation', refresher);
+  
+      setTimeout(() => {
+        console.log('Async operation has ended');
+        refresher.complete();
+      }, 1000);
+    }
 
     goWatPage(item){
       this.navCtrl.push("WatPage");

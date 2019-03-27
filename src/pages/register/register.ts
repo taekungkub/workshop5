@@ -80,6 +80,7 @@ export class RegisterPage {
         console.log("Insert Success")
         this.updataMember();
         this.alert("Success! You're registration")
+        this.navCtrl.setRoot("LoginPage")
 
         //reset
         this.fullname = "";

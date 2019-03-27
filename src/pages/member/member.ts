@@ -36,6 +36,7 @@ export class MemberPage {
     , private alertCtrl: AlertController, public loadingCtrl: LoadingController, private toastCtrl: ToastController
     ,private fire: AngularFireAuth,public modalController: ModalController) {
 
+      
     this.itemsUser = db.list('/user')
       .snapshotChanges()
 
@@ -107,6 +108,11 @@ export class MemberPage {
           text: 'ยืนยัน',
           handler: () => {
 
+            let loading = this.loadingCtrl.create({
+              spinner: 'circles',
+              content: 'Please wait...',
+            });
+          
     firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(data => {
      var user = firebase.auth().currentUser;
     user.updateProfile({
@@ -119,7 +125,7 @@ export class MemberPage {
       // An error happened.
     }); 
     })
-
+ 
     //update realtime admin
     this.fullname = item.payload.val().fullname;
     this.email = item.payload.val().email;
@@ -138,6 +144,11 @@ export class MemberPage {
     
     let itemRef2 = this.db.list('user');
     itemRef2.remove(item.key);
+
+    loading.present().then(() => {
+       
+      loading.dismiss();
+    }) //loadin
 
 
     console.log("Status " + this.displayName)
@@ -259,6 +270,12 @@ alert.present();
 
             console.log("key" + JSON.stringify(item));
 
+            let loading = this.loadingCtrl.create({
+              spinner: 'circles',
+              content: 'Please wait...',
+            });
+          
+
             //เปลี่ยนเป็นสมาชิก
             this.updateMember(item);
             this.member(item);
@@ -266,12 +283,16 @@ alert.present();
             let itemRef = this.db.list('admin');
             itemRef.remove(item.key);
 
-        
+            loading.present().then(() => {
+            
+              loading.dismiss();
+            }) //loadin
             this.toast2("")
           }
         }
       ]
     });
+    
     alert.present();
   }
 
@@ -348,6 +369,18 @@ alert.present();
     const modal = this.modalController.create('ModalPage',data)
     console.log(this.fullname + this.email + this. photoURL + this.status)
     
+    modal.present();
+  }
+
+  ViewDataStaff(item){
+  
+    let data = {
+      fullname : item.payload.val().fullname,
+      email : item.payload.val().email,
+      status : item.payload.val().status,
+      photoURL : item.payload.val().photoURL,
+      }
+    const modal = this.modalController.create('ModalPage',data)
     modal.present();
   }
 

@@ -128,7 +128,9 @@ export class LoginPage {
           this.navCtrl.setRoot("Home");
         } else if (user.displayName == "admin") {
           this.navCtrl.setRoot("AdminPage");
-        }
+        } /* else if (user.displayName == "staff") {
+          this.navCtrl.setRoot("StaffPage");
+        } */
 
         console.log("this user: " + user.displayName)
       } else {

@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar color="wat">
+  <ion-navbar color="title2">
     <ion-title>ปัญหาและข้อเสนอแนะ</ion-title>
   </ion-navbar>
 
@@ -26,14 +26,14 @@
                   <p item-end >{{item.payload.val().read}}</p>
               </ion-item>
               <ion-item-options side="right">
-                  <button ion-button color="light" (click)="presentSuggestionModal(item)">
+                  <button ion-button color="primary" (click)="presentSuggestionModal(item)">
                       <ion-icon name="md-eye"></ion-icon>
-                      View
+                      อ่านรายละเอียด
                   </button>
                
                   <button ion-button color="danger" (click)="onClickDelete(item)">
                       <ion-icon name="trash"></ion-icon>
-                      Delete
+                      ลบ
                   </button>
               </ion-item-options>
             </ion-item-sliding>

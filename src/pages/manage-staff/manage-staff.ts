@@ -35,9 +35,14 @@ export class ManageStaffPage {
 
   displayName:string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
-    , private alertCtrl: AlertController, public loadingCtrl: LoadingController, private toastCtrl: ToastController
-    ,private fire: AngularFireAuth,public modalController: ModalController) {
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams, 
+              private db: AngularFireDatabase,         
+              private alertCtrl: AlertController,
+              public loadingCtrl: LoadingController,
+               private toastCtrl: ToastController
+              ,private fire: AngularFireAuth,
+              public modalController: ModalController) {
 
       this.itemsStaff = db.list('/staff')
       .snapshotChanges()
