@@ -20,6 +20,14 @@ export class SuggestionPage {
   constructor(public navCtrl: NavController, public navParams: NavParams
     , private alertCtrl:AlertController, public loadingCtrl: LoadingController,private db: AngularFireDatabase,) {
 
+      let loading = this.loadingCtrl.create({
+        spinner: 'circles',
+        content: 'Please wait...',
+      });
+      loading.present().then(() => {
+
+        loading.dismiss();
+      }) //loadin
  
   } //constructor
 

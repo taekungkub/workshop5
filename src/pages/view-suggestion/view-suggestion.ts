@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController , LoadingController } from 'ionic-angular';
 
 import { AlertController } from 'ionic-angular';
 import { ToastController } from 'ionic-angular';
@@ -33,12 +33,21 @@ export class ViewSuggestionPage {
               private fire: AngularFireAuth,
               public modalController: ModalController,
               private alertCtrl: AlertController,
-              private toastCtrl: ToastController
+              private toastCtrl: ToastController,
+              private loadingCtrl: LoadingController
     ,) {
+
+      let loading = this.loadingCtrl.create({
+        spinner: 'circles',
+        content: 'Please wait...',
+      });
+      loading.present().then(() => {
             
 
                 this.itemSuggestion = db.list('/suggestion', ref => ref.orderByChild('timestamp'))
               .snapshotChanges()
+              loading.dismiss();
+            }) //loadin
   } //constructor
 
   ionViewDidLoad() {

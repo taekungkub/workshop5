@@ -79,12 +79,17 @@ export class AdminPage {
   }
 
   ViewSuggestion(){
-    this.navCtrl.push("ViewSuggestionPage")
+    this.navCtrl.push("ViewSuggestionPage");
 
   }
 
   manageUser(){
-    this.navCtrl.push("ManageUserPage")
+    this.navCtrl.push("ManageUserPage");
+  }
+
+
+  ViewUser(){
+    this.navCtrl.push("UserPage");
   }
 
   

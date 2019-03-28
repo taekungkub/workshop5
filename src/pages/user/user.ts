@@ -1,18 +1,21 @@
-import { Component , ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams , ModalController , AlertController 
+  ,ToastController , LoadingController} from 'ionic-angular';
 
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { AngularFireDatabase } from 'angularfire2/database';
+import { Observable } from 'rxjs/Observable';
+
+import 'rxjs/add/operator/map';
+
+import { AngularFireAuthModule, AngularFireAuth } from 'angularfire2/auth';
+
+
+import { map } from 'rxjs/operators';
+
+
 
 import * as firebase from "firebase";
-import { AngularFireAuthModule , AngularFireAuth  } from 'angularfire2/auth';
 
-
-
-/**
- * Generated class for the UserPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -22,25 +25,44 @@ import { AngularFireAuthModule , AngularFireAuth  } from 'angularfire2/auth';
 export class UserPage {
 
 
-  facebook;
+  itemsUser: Observable<any[]>;
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams,  params: NavParams , private fire:AngularFireAuth ,) {
-    this.facebook = params.data.facebook;
+  constructor(public navCtrl: NavController, 
+    public navParams: NavParams,
+    private db: AngularFireDatabase,
+    public modalController: ModalController,
+    public alertCtrl: AlertController,
+    private fire: AngularFireAuth,
+    private toastCtrl: ToastController,
+    private loadingCtrl: LoadingController) {
 
+      let loading = this.loadingCtrl.create({
+        spinner: 'circles',
+        content: 'Please wait...',
+      });
+      loading.present().then(() => {
+        this.itemsUser = db.list('/user')
+        .snapshotChanges()
+    
+        loading.dismiss();
+      }) //loadin
 
-  }
-
+}
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserPage');
-    console.log(this.facebook)
   }
 
-  LogoutOfFacebook() {
-    this.navCtrl.push("LoginPage")
+  ViewDataUser(item){
+
+    let data = {
+      fullname : item.payload.val().fullname,
+      email : item.payload.val().email,
+      status : item.payload.val().status,
+      photoURL : item.payload.val().photoURL,
+      }
+    const modal = this.modalController.create('ModalPage',data)
+    modal.present();
   }
-
-
-  
 
 }
