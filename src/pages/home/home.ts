@@ -30,8 +30,9 @@ export class Home {
   
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
     , private storage: AngularFireStorage, public loadingCtrl: LoadingController) {
-     
 
+  
+      
       let loading = this.loadingCtrl.create({
         spinner: 'circles',
         content: 'Please wait...',

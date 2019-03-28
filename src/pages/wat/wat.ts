@@ -12,12 +12,6 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 
-/**
- * Generated class for the WatPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @IonicPage()
 @Component({
@@ -29,8 +23,8 @@ export class WatPage {
   itemsWat: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase
-            , private storage: AngularFireStorage, public loadingCtrl: LoadingController) {
-
+            , private storage: AngularFireStorage, public loadingCtrl: LoadingController,) {
+      
    // this.items = db.list('/wat').valueChanges();
    let loading = this.loadingCtrl.create({
     spinner: 'circles',

@@ -40,17 +40,12 @@ export class LoginPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, private alertCtrl: AlertController
     , private db: AngularFireDatabase) {
 
-    this.itemsUser = db.list('/user', ref => ref.orderByChild('fullname'))
-      .snapshotChanges().map(result => {
-        return result.reverse();
-      })
-
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
   }
-
+/*
   LoginFacebook() {
     this.fire.auth.signInWithPopup(new firebase.auth.FacebookAuthProvider()).then(res => {
       console.log(res);
@@ -72,8 +67,7 @@ export class LoginPage {
       }
     })
 
-  }
-
+  } */
 
 
 
@@ -91,7 +85,7 @@ export class LoginPage {
 
   signIn() {
     if (this.email == null && this.password == null) {
-      this.alert("กรุณากรอกอีเมลล์และรหัสผ่าน")
+      this.alert("กรุณากรอกอีเมล์และรหัสผ่าน")
     } else {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(data => {
         console.log(data)

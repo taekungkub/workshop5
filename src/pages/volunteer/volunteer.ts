@@ -8,12 +8,8 @@ import 'rxjs/add/operator/map';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
-/**
- * Generated class for the VolunteerPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+
+
 
 @IonicPage()
 @Component({
@@ -24,8 +20,9 @@ export class VolunteerPage {
   itemsVolunteer: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, private storage: AngularFireStorage
-        , public loadingCtrl: LoadingController) {
+            , public loadingCtrl: LoadingController,) {
 
+      
           let loading = this.loadingCtrl.create({
             spinner: 'circles',
             content: 'Please wait...',
