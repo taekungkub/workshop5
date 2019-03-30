@@ -33,6 +33,8 @@ export class AdminPage {
     this.photoURL = fire.auth.currentUser.photoURL;
     this.displayName = fire.auth.currentUser.displayName;
 
+  
+
     loading.dismiss();
   }) //loadin
   }

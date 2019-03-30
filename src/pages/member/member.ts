@@ -77,6 +77,7 @@ export class MemberPage {
     }).then(function () {
       console.log("this member: " + user.displayName)
       // Update successful.
+      this.user.displayName=""
     }).catch(function (error) {
       // An error happened.
     }); 
@@ -90,6 +91,7 @@ export class MemberPage {
   }//member
 
   admin(item) {
+    firebase.auth().signOut()
     this.email = item.payload.val().email;
     this.password = item.payload.val().password;
 
@@ -121,6 +123,7 @@ export class MemberPage {
     }).then(function () {
       console.log("this admin: " + user.displayName)
       // Update successful.
+      this.user.displayName=""
     }).catch(function (error) {
       // An error happened.
     }); 
@@ -181,6 +184,7 @@ alert.present();
     } else {
 
       this.signUpAdmin();
+    
     }
   }//register
 
@@ -211,7 +215,7 @@ alert.present();
         this.email = "";
         this.password = "";
         this.CFpassword = "";
-
+     
       })
       loading.dismiss();
 
@@ -238,6 +242,7 @@ alert.present();
     }).then(function () {
       console.log("this admin: " + user.displayName)
       // Update successful.
+      this.user.displayName="";
     }).catch(function (error) {
       // An error happened.
     });
@@ -252,6 +257,7 @@ alert.present();
   }
 
   deleteAdmin(item) {
+    firebase.auth().signOut()
     let alert = this.alertCtrl.create({
       title: 'ยืนยันการลบ',
       message: 'คุณต้องการจะลบหรือไม่',
@@ -317,6 +323,7 @@ alert.present();
         photoURL: "https://firebasestorage.googleapis.com/v0/b/login-a4abb.appspot.com/o/user.png?alt=media&token=d3af7b88-71d2-46c7-9908-c658e92cab55"
       }).then(function () {
         // Update successful.
+       this.user.displayName=""
       }).catch(function (error) {
         // An error happened.
       });

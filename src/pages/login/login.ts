@@ -1,5 +1,5 @@
 import { Component, ErrorHandler } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams , LoadingController } from 'ionic-angular';
 
 
 import * as firebase from "firebase";
@@ -38,7 +38,17 @@ export class LoginPage {
   itemsUser: Observable<any[]>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private fire: AngularFireAuth, private alertCtrl: AlertController
-    , private db: AngularFireDatabase) {
+    , private db: AngularFireDatabase, public loadingCtrl: LoadingController) {
+
+      let loading = this.loadingCtrl.create({
+        spinner: 'circles',
+        content: 'Please wait...'
+
+      });
+      loading.present().then(() => {
+
+      })
+      loading.dismiss();
 
   }
 
@@ -86,7 +96,11 @@ export class LoginPage {
   signIn() {
     if (this.email == null && this.password == null) {
       this.alert("กรุณากรอกอีเมล์และรหัสผ่าน")
-    } else {
+    } else if (this.password == null){
+      this.alert("กรุณากรอกอีเมล์และรหัสผ่าน")
+    } else if (this.email == null){
+      this.alert("กรุณากรอกอีเมล์และรหัสผ่าน")
+    }else {
       firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(data => {
         console.log(data)
         console.log("got some data", this.fire.auth.currentUser);
@@ -122,9 +136,9 @@ export class LoginPage {
           this.navCtrl.setRoot("Home");
         } else if (user.displayName == "admin") {
           this.navCtrl.setRoot("AdminPage");
-        } /* else if (user.displayName == "staff") {
+        }  else if (user.displayName == "staff") {
           this.navCtrl.setRoot("StaffPage");
-        } */
+        } 
 
         console.log("this user: " + user.displayName)
       } else {
