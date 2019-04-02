@@ -62,6 +62,8 @@ export class AddPage {
 
   onClickSubmit() {
 
+
+ 
     if (this.student.type == "wat") {
        if(this.student.title == "" && this.student.name == ""){
         let alert = this.alertCtrl.create({
@@ -151,6 +153,7 @@ export class AddPage {
           buttons: ['Dismiss']
         });
         alert.present();
+        
       }
 
     
@@ -158,6 +161,8 @@ export class AddPage {
     //reset
     this.isUploaded = false;
 
+    this.student.type = "Default";
+  
     this.student.title = "";
     this.student.name = "";
     this.student.time = "";
@@ -189,8 +194,8 @@ export class AddPage {
       desertRef.delete().subscribe(() => {
         console.log("deleted")
       })
-    }
-
+    } 
+   
   } //onClickDelete
 
   uploadFile(event) {

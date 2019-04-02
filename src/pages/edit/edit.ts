@@ -111,11 +111,23 @@ export class EditPage {
             let itemRef = this.db.list('wat');
             itemRef.remove(item.key);
             if (this.student.imageName) {
+       
               var desertRef = this.storage.ref(item.payload.val().imageName);
+              var desertRef2 = this.storage.ref(item.payload.val().imageName2);
+              var desertRef3 = this.storage.ref(item.payload.val().imageName3);
+              var desertRef4 = this.storage.ref(item.payload.val().imageName4);
               desertRef.delete().subscribe(() => {
                 console.log("deleted")
               })
-
+              desertRef2.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef3.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef4.delete().subscribe(() => {
+                console.log("deleted")
+              })
             }
             this.toast2("")
           }
@@ -147,7 +159,19 @@ export class EditPage {
             itemRef.remove(item.key);
             if (this.student.imageName) {
               var desertRef = this.storage.ref(item.payload.val().imageName);
+              var desertRef2 = this.storage.ref(item.payload.val().imageName2);
+              var desertRef3 = this.storage.ref(item.payload.val().imageName3);
+              var desertRef4 = this.storage.ref(item.payload.val().imageName4);
               desertRef.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef2.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef3.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef4.delete().subscribe(() => {
                 console.log("deleted")
               })
             }
@@ -181,7 +205,19 @@ export class EditPage {
             itemRef.remove(item.key);
             if (this.student.imageName) {
               var desertRef = this.storage.ref(item.payload.val().imageName);
+              var desertRef2 = this.storage.ref(item.payload.val().imageName2);
+              var desertRef3 = this.storage.ref(item.payload.val().imageName3);
+              var desertRef4 = this.storage.ref(item.payload.val().imageName4);
               desertRef.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef2.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef3.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef4.delete().subscribe(() => {
                 console.log("deleted")
               })
             }
@@ -213,10 +249,22 @@ export class EditPage {
 
             console.log("key" + JSON.stringify(item));
             let itemRef = this.db.list('sport');
-            itemRef.remove(item.key);
+            itemRef.remove(item.key); 
             if (this.student.imageName) {
               var desertRef = this.storage.ref(item.payload.val().imageName);
+              var desertRef2 = this.storage.ref(item.payload.val().imageName2);
+              var desertRef3 = this.storage.ref(item.payload.val().imageName3);
+              var desertRef4 = this.storage.ref(item.payload.val().imageName4);
               desertRef.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef2.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef3.delete().subscribe(() => {
+                console.log("deleted")
+              })
+              desertRef4.delete().subscribe(() => {
                 console.log("deleted")
               })
             }
@@ -268,6 +316,13 @@ export class EditPage {
       })
     )
       .subscribe();
+
+      if (this.student.imageName) {
+        var desertRef = this.storage.ref(this.student.imageName);
+        desertRef.delete().subscribe(() => {
+          console.log("deleted")
+        })
+      }
   } //Upload File
 
   uploadFile2(event) {
@@ -293,6 +348,12 @@ export class EditPage {
       })
     )
       .subscribe();
+      if (this.student.imageName2) {
+        var desertRef = this.storage.ref(this.student.imageName2);
+        desertRef.delete().subscribe(() => {
+          console.log("deleted")
+        })
+      }
   } //Upload File2
 
   uploadFile3(event) {
@@ -318,6 +379,13 @@ export class EditPage {
       })
     )
       .subscribe();
+
+      if (this.student.imageName3) {
+        var desertRef = this.storage.ref(this.student.imageName3);
+        desertRef.delete().subscribe(() => {
+          console.log("deleted")
+        })
+      }
   } //Upload File3
 
   uploadFile4(event) {
@@ -343,6 +411,13 @@ export class EditPage {
       })
     )
       .subscribe();
+
+      if (this.student.imageName4) {
+        var desertRef4 = this.storage.ref(this.student.imageName4);
+        desertRef4.delete().subscribe(() => {
+          console.log("deleted")
+        })
+      }
   } //Upload File4
 
 
@@ -502,11 +577,17 @@ export class EditPage {
   }
 
   updateWat(item) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'circles',
+      content: 'Please wait...',
+    });
+    loading.present().then(() => {
     let itemRef = this.db.list('wat');
     itemRef.update(this.student.key, this.student);
-    this.AddForm = false;
 
-  
+    loading.dismiss();
+    }) //loading
+    this.AddForm = false;
     this.toast("")
 
   } //updateWat
@@ -522,33 +603,46 @@ export class EditPage {
     let itemRef = this.db.list('volunteer');
     itemRef.update(this.student.key, this.student);
     loading.dismiss();
-  }) //loading
-
+    }) //loading
     this.AddForm = false;
+ 
+
+
     this.toast("")
 
   } //updateVolunteer
 
 
   updateTravel(item) {
+    let loading = this.loadingCtrl.create({
+      spinner: 'circles',
+      content: 'Please wait...',
+    });
+    loading.present().then(() => {
     let itemRef = this.db.list('travel');
     itemRef.update(this.student.key, this.student);
-
+    loading.dismiss();
+  }) //loading
     this.AddForm = false;
     this.toast("")
-
   } //updateTravel
 
   updateSport(item) {
-  
+    let loading = this.loadingCtrl.create({
+      spinner: 'circles',
+      content: 'Please wait...',
+    });
+    loading.present().then(() => {
     let itemRef = this.db.list('sport');
     itemRef.update(this.student.key, this.student);
 
+    loading.dismiss();
+  }) //loading
+
+
     this.AddForm = false;
     this.toast("")
-
   } //updateTravel
-
   dismissUpdate() {
     this.AddForm = false;
   }
