@@ -51,19 +51,22 @@ export class AddPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, private db: AngularFireDatabase, 
               private storage: AngularFireStorage,private alertCtrl: AlertController) {
 
-    this.items = db.list('/wat', ref => ref.orderByChild('title'))
-      .snapshotChanges().map(result => {
-        return result.reverse();
-      })
+  
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad AddPage');
   }
 
-  onClickSubmit() {
-
-
+  alert2(message: string) {
+    this.alertCtrl.create({
+      title: message,
+      subTitle: "",
+      buttons: ['OK']
+    }).present();
+  }
  
+
+  onClickSubmit() {
     if (this.student.type == "wat") {
        if(this.student.title == "" && this.student.name == ""){
         let alert = this.alertCtrl.create({
@@ -72,7 +75,7 @@ export class AddPage {
           buttons: ['Dismiss']
         });
         alert.present();
-      } else {
+       }else {
         let alert = this.alertCtrl.create({
           title: 'เพิ่มข้อมูลสำเร็จแล้ว',
           subTitle: '',
@@ -201,6 +204,7 @@ export class AddPage {
   uploadFile(event) {
     const file = event.target.files[0];
     if (file.type.split('/')[0] !== 'image') {
+      this.alert2("กรุณาเลือกไฟล์ประเภทรูปภาพ")
       console.error('unsupported file type :( ')
       return
     }
@@ -227,6 +231,7 @@ export class AddPage {
   uploadFile2(event) {
     const file = event.target.files[0];
     if (file.type.split('/')[0] !== 'image') {
+      this.alert2("กรุณาเลือกไฟล์ประเภทรูปภาพ")
       console.error('unsupported file type :( ')
       return
     }
@@ -249,9 +254,12 @@ export class AddPage {
       .subscribe();
   } //Upload File2
 
+ 
+  
   uploadFile3(event) {
     const file = event.target.files[0];
     if (file.type.split('/')[0] !== 'image') {
+      this.alert2("กรุณาเลือกไฟล์ประเภทรูปภาพ")
       console.error('unsupported file type :( ')
       return
     }
@@ -261,6 +269,8 @@ export class AddPage {
 
 
     this.uploadPercent3 = task.percentageChanges();
+
+
 
     task.snapshotChanges().pipe(
       finalize(() => {
@@ -277,6 +287,7 @@ export class AddPage {
   uploadFile4(event) {
     const file = event.target.files[0];
     if (file.type.split('/')[0] !== 'image') {
+      this.alert2("กรุณาเลือกไฟล์ประเภทรูปภาพ")
       console.error('unsupported file type :( ')
       return
     }

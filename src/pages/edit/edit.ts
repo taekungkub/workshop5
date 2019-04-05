@@ -110,8 +110,7 @@ export class EditPage {
             console.log("key" + JSON.stringify(item));
             let itemRef = this.db.list('wat');
             itemRef.remove(item.key);
-            if (this.student.imageName) {
-       
+  
               var desertRef = this.storage.ref(item.payload.val().imageName);
               var desertRef2 = this.storage.ref(item.payload.val().imageName2);
               var desertRef3 = this.storage.ref(item.payload.val().imageName3);
@@ -128,7 +127,7 @@ export class EditPage {
               desertRef4.delete().subscribe(() => {
                 console.log("deleted")
               })
-            }
+        
             this.toast2("")
           }
         }
@@ -157,7 +156,7 @@ export class EditPage {
             console.log("key" + JSON.stringify(item));
             let itemRef = this.db.list('volunteer');
             itemRef.remove(item.key);
-            if (this.student.imageName) {
+          
               var desertRef = this.storage.ref(item.payload.val().imageName);
               var desertRef2 = this.storage.ref(item.payload.val().imageName2);
               var desertRef3 = this.storage.ref(item.payload.val().imageName3);
@@ -174,7 +173,7 @@ export class EditPage {
               desertRef4.delete().subscribe(() => {
                 console.log("deleted")
               })
-            }
+            
             this.toast2("")
           }
         }
@@ -203,7 +202,7 @@ export class EditPage {
             console.log("key" + JSON.stringify(item));
             let itemRef = this.db.list('travel');
             itemRef.remove(item.key);
-            if (this.student.imageName) {
+      
               var desertRef = this.storage.ref(item.payload.val().imageName);
               var desertRef2 = this.storage.ref(item.payload.val().imageName2);
               var desertRef3 = this.storage.ref(item.payload.val().imageName3);
@@ -220,7 +219,7 @@ export class EditPage {
               desertRef4.delete().subscribe(() => {
                 console.log("deleted")
               })
-            }
+            
             this.toast2("")
           }
         }
@@ -250,7 +249,7 @@ export class EditPage {
             console.log("key" + JSON.stringify(item));
             let itemRef = this.db.list('sport');
             itemRef.remove(item.key); 
-            if (this.student.imageName) {
+     
               var desertRef = this.storage.ref(item.payload.val().imageName);
               var desertRef2 = this.storage.ref(item.payload.val().imageName2);
               var desertRef3 = this.storage.ref(item.payload.val().imageName3);
@@ -267,7 +266,7 @@ export class EditPage {
               desertRef4.delete().subscribe(() => {
                 console.log("deleted")
               })
-            }
+            
             this.toast2("")
           }
         }
@@ -292,10 +291,21 @@ export class EditPage {
 
   uploadPercent4: Observable<number>;
   downloadURL4: Observable<string>;
+
+  alert(message: string) {
+    this.alertCtrl.create({
+      title: message,
+      subTitle: "",
+      buttons: ['OK']
+    }).present();
+
+  }
+
   
   uploadFile(event) {
     const file = event.target.files[0];
     if (file.type.split('/')[0] !== 'image') {
+      this.alert("กรุณาเลือกไฟล์ประเภทรูปภาพ")
       console.error('unsupported file type :( ')
       return
     }
@@ -328,6 +338,7 @@ export class EditPage {
   uploadFile2(event) {
     const file = event.target.files[0];
     if (file.type.split('/')[0] !== 'image') {
+      this.alert("กรุณาเลือกไฟล์ประเภทรูปภาพ")
       console.error('unsupported file type :( ')
       return
     }
@@ -359,6 +370,7 @@ export class EditPage {
   uploadFile3(event) {
     const file = event.target.files[0];
     if (file.type.split('/')[0] !== 'image') {
+      this.alert("กรุณาเลือกไฟล์ประเภทรูปภาพ")
       console.error('unsupported file type :( ')
       return
     }
@@ -391,6 +403,7 @@ export class EditPage {
   uploadFile4(event) {
     const file = event.target.files[0];
     if (file.type.split('/')[0] !== 'image') {
+      this.alert("กรุณาเลือกไฟล์ประเภทรูปภาพ")
       console.error('unsupported file type :( ')
       return
     }

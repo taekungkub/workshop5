@@ -34,9 +34,6 @@
 
     <br>
 
-
-
-
     <ion-item-divider color="light">ภาพประกอบ</ion-item-divider>
     <ion-item>
       ภาพหน้าปก  <input type="file" (change)="uploadFile($event)" />
@@ -51,48 +48,69 @@
         ภาพ 4 <input type="file" (change)="uploadFile4($event)" />
       </ion-item>
 
-    <ion-item-group>
-
-      <div *ngIf="uploadPercent | async as pct">
-        <ion-item-divider color="light">ตัวอย่าง</ion-item-divider>
-        <progress class="progress is-info" [value]="pct" max="100"></progress>
-        {{ pct | number }}%
-      </div>
-      <div class="image">
-        <img src="{{ downloadURL | async }}">
-      </div>
-    </ion-item-group>
-
-    <div *ngIf="uploadPercent2 | async as pct">
-      <progress class="progress is-info" [value]="pct" max="100"></progress>
-      {{ pct | number }}%
-    </div>
-    <div class="image">
-      <img src="{{ downloadURL2 | async }}">
-    </div>
-
-    <div *ngIf="uploadPercent3 | async as pct">
-        <progress class="progress is-info" [value]="pct" max="100"></progress>
-        {{ pct | number }}%
-      </div>
-      <div class="image">
-        <img src="{{ downloadURL3 | async }}">
-      </div>
-
-      
-    <div *ngIf="uploadPercent4 | async as pct">
-      <progress class="progress is-info" [value]="pct" max="100"></progress>
-      {{ pct | number }}%
-    </div>
-    <div class="image">
-      <img src="{{ downloadURL4 | async }}">
-    </div>
   
+      
+      <table style="width:100%">
+          <tr>
+             <th>
+                <div *ngIf="uploadPercent | async as pct">
+                   <progress class="progress is-info" [value]="pct" max="100"></progress>
+                   {{ pct | number }}%
+                </div>
+             </th>
+             <th>
+                <div *ngIf="uploadPercent2 | async as pct">
+                   <progress class="progress is-info" [value]="pct" max="100"></progress>
+                   {{ pct | number }}%
+                </div>
+             </th>
+          </tr>
+          <tr>
+             <td>
+                <div class="image">
+                   <img src="{{ downloadURL | async }}">
+                </div>
+             </td>
+             <td>
+                <div class="image">
+                   <img src="{{ downloadURL2 | async }}">
+                </div>
+             </td>
+             
+          </tr>
+       </table>
 
-
-
-
-
+   
+       <br>
+       <table style="width:100%">
+         <tr>
+            <th>
+                <div *ngIf="uploadPercent3 | async as pct">
+                   <progress class="progress is-info" [value]="pct" max="100"></progress>
+                   {{ pct | number }}%
+                </div>
+             </th>
+             <th>
+                <div *ngIf="uploadPercent4 | async as pct">
+                   <progress class="progress is-info" [value]="pct" max="100"></progress>
+                   {{ pct | number }}%
+                </div>
+             </th>
+         </tr>
+         <tr>
+            <td>
+                <div class="image">
+                   <img src="{{ downloadURL3 | async }}">
+                </div>
+             </td>
+             <td>
+                <div class="image">
+                   <img src="{{ downloadURL4 | async }}">
+                </div>
+             </td>
+         </tr>
+       </table>
+ 
 
     <!--title-->
     <div class="form-group">
