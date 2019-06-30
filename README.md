@@ -1,4 +1,5 @@
 # workshop5
+npm install -g ionic@3.9.2
 npm Angularfire2 
 npm i rxjs@^6.0 rxjs-compat
 
