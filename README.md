@@ -22,7 +22,9 @@ C:\Users\tokim\AppData\Local\Android\Sdk
 PATH
 C:\Users\tokim\AppData\Local\Android\Sdk\tools
 
+
 C:\Users\tokim\AppData\Local\Android\Sdk\platform-tools
+
 
 ต้องใช้ ndk เวอร์ชั่น 17 ในการ build
 
