@@ -42,7 +42,7 @@ jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore yitho.keystore 
 
 // The zipalign tool can be found in  /path/to/Android/sdk/build-tools/VERSION/
 
-C:\Users\tokim\AppData\Local\Android\Sdk\build-tools\29.0.0
+cd C:\Users\tokim\AppData\Local\Android\Sdk\build-tools\29.0.0
 
 zipalign -v 4 D:\workshop5\app-release-unsigned.apk D:\workshop5\yitho.apk
 
