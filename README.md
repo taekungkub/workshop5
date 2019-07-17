@@ -46,4 +46,6 @@ C:\Users\tokim\AppData\Local\Android\Sdk\build-tools\29.0.0
 
 zipalign -v 4 D:\workshop5\app-release-unsigned.apk D:\workshop5\yitho.apk
 
+------------------------------------------------------------------
 
+[![54257848-2093107720724402-2669325962625155072-n.png](https://i.postimg.cc/4NSkWN6d/54257848-2093107720724402-2669325962625155072-n.png)](https://postimg.cc/56LR0Jkd)
