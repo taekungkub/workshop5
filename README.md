@@ -1,4 +1,6 @@
 # workshop5
+ionic start workshop5 sidemenu --type=ionic-angular
+
 npm install -g ionic@3.9.2
 
 npm Angularfire2 
